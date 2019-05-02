@@ -63,3 +63,19 @@ nav{
     /* padding:10px 0.1px; */
     /* padding-bottom: 0.1px; */
 }
+
+#home-content{
+    padding:50px 50px; 
+    background:#f8f9fa;
+}
+
+#featured-text{
+    padding:50px;
+}
+
+#content{
+    /* width: */
+    /* height:700px; */
+    padding:75px 100px; 
+    /* background:#f8f9fa; */
+}
