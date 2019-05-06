@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PetProfileComponent } from './pet-profile/pet-profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
     NavigationComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    PetProfileComponent
   ],
   imports: [
     BrowserModule,
