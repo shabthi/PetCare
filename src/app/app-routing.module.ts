@@ -4,13 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PetProfileComponent } from './pet-profile/pet-profile.component';
+import { RegisterComponent } from './admin/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'petProfile', component: PetProfileComponent }
-
+  { path: 'petProfile', component: PetProfileComponent },
+  { path: 'admin/register', component: RegisterComponent }
 ];
 
 @NgModule({
