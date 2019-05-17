@@ -27,12 +27,27 @@ router.post('/admin/register', (req, res, next)=> {
     Admin.create(email, name, password)
     .then(function(result){
         res.status(200);
-        res.send(result);
+        res.json(result);
     })
     .catch(function(error){
         res.status(500);
-        res.send(error);
+        res.json(error);
     });
 });
+
+router.post('/admin/login', (req, res, next)=> {
+    var email = req.body.email;
+    var password = req.body.password;
+    
+    Admin.login(email, password)
+    .then(function(result){
+        res.status(200);
+        res.json(result);
+    })
+    .catch(function(error){
+        res.status(500);
+        res.json(error);
+    });});
+
 
 module.exports = router;

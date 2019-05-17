@@ -8,6 +8,7 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
+  //register admin
   create(email: String, name: String, password: String) {
     let self = this;
     return new Promise(function(resolve, reject){
@@ -26,6 +27,27 @@ export class AdminService {
         reject(error);
       })
     })
-    
   }
+
+  //validate admin login
+  login(email:String, password:String){
+    let self = this;
+    return new Promise(function(resolve, reject){
+      let url = "http://localhost:8080/admin/login"
+      self.http.post(url, 
+        {
+         email:email,
+         password:password 
+        }).toPromise()
+      .then(function (result:string) {
+        localStorage.setItem('currentUserName', result);
+        localStorage.setItem('currentUserType', 'admin');
+        resolve(result);
+      })
+      .catch(function (error) {
+        reject(error);
+      })
+    })
+  }
+
 }
