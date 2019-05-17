@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   error: boolean = false;
   error_message:String = "";
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
     this.adminService.login(this.form.email, this.form.password)
     .then(function(result){
       self.error = false;
+      location.href = "/";
     })
     .catch(function(error){
       self.error = true;

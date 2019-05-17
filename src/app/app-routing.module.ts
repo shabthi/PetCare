@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { PetProfileComponent } from './pet-profile/pet-profile.component';
 import { RegisterComponent } from './admin/register/register.component';
 import { LoginComponent } from './admin/login/login.component';
+import { LogoutComponent } from './admin/logout/logout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,7 +14,9 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'petProfile', component: PetProfileComponent },
   { path: 'admin/register', component: RegisterComponent },
-  { path: 'admin/login', component: LoginComponent }
+  { path: 'admin/login', component: LoginComponent },
+  { path: 'admin/logout', component: LogoutComponent }
+
 
 ];
 

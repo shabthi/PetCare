@@ -14,6 +14,7 @@ import { PetProfileComponent } from './pet-profile/pet-profile.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { RegisterComponent } from './admin/register/register.component';
 import { LoginComponent } from './admin/login/login.component';
+import { LogoutComponent } from './admin/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoginComponent } from './admin/login/login.component';
     PetProfileComponent,
     AdminComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
