@@ -24,7 +24,6 @@ module.exports = class Admin {
 
         return new Promise(function(resolve, reject){
             var db = require('../db').getDb();
-            console.log(email);
             db.collection('admins').findOne({email:email}, function(err, document){
                 if(err){
                     reject("DB error");

@@ -32,14 +32,14 @@
         <a class="nav-link" href="#">Contact Us</a>
       </li>
 
-      <li class="nav-item" *ngIf="userType=='admin'">
+      <li class="nav-item" *ngIf="getUserType()=='admin'">
         <a class="nav-link" href="#">View Reports</a>
       </li>
 
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="userType=='admin'" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" *ngIf="getUserType()=='admin'" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            {{userName}}
+            {{getUserName()}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" routerLink="/admin/logout">Log Out</a>
