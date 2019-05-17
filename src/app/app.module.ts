@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PetProfileComponent } from './pet-profile/pet-profile.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { RegisterComponent } from './admin/register/register.component';
+import { LoginComponent } from './admin/login/login.component';
+import { LogoutComponent } from './admin/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { RegisterComponent } from './admin/register/register.component';
     AboutComponent,
     PetProfileComponent,
     AdminComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

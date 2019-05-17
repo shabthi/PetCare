@@ -19,5 +19,25 @@ module.exports = class Admin {
         });
 
     }
+
+    static login(email, password){
+
+        return new Promise(function(resolve, reject){
+            var db = require('../db').getDb();
+            console.log(email);
+            db.collection('admins').findOne({email:email}, function(err, document){
+                if(err){
+                    reject("DB error");
+                    return;
+                }
+                if(document == null) reject("Email not found");
+                else{
+                    if(document.password != password) reject("Incorrect email or password");
+                    else resolve(document.name);
+                }
+            });
+        });
+
+    }
     
 }

@@ -83,7 +83,10 @@ export class RegisterComponent implements OnInit {
 
   submit(): void{
     if(!this.validate()) return;
-    var res = this.admin.create(this.form.email, this.form.name, this.form.password);
+    var res = this.admin.create(this.form.email, this.form.name, this.form.password)
+    .then(function(){
+      this.router.navigate(['/register']);
+    });
 
     if(!res){
       alert("Error");
