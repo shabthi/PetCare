@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-report',
@@ -20,7 +21,8 @@ export class ReportComponent implements OnInit {
   }
 
   generate(){
-    let date = this.report.date1.toISOString().split("T")[0];
+    let date = moment(this.report.date1).format("YYYY-MM-DD");
+    //console.log(date);
     this.router.navigate(['/admin/reports/' + this.report.type + '/' + date]);
   }
 

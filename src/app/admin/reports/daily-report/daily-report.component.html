@@ -1,3 +1,45 @@
-<p>
-  daily-report works!
-</p>
+<div fxLayout="column" style="margin-top:20px;">
+
+  <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px">
+    <mat-card fxLayout="row" fxLayoutGap="20px">
+
+        <div class="info_box" fxLayout="column">
+            <div class="info_box title">Adoptions</div>
+            <div class="info_box val">
+               {{report.stats.adoptions}}
+            </div>
+        </div>
+
+        <div class="info_box" fxLayout="column">
+            <div class="info_box title">New Requests</div>
+            <div class="info_box val">
+               44
+            </div>
+        </div>
+
+    </mat-card>
+
+    <mat-card fxLayout="row" fxLayoutGap="20px">
+
+            <app-adoptions-by-day [start]="report.start" [end]="report.date"></app-adoptions-by-day>
+    
+        </mat-card>
+  </div>
+</div>
+
+<style>
+    .info_box .title {
+        color: rgba(0, 0, 0, 0.54);
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .info_box .val {
+        color: rgba(0, 0, 0, 0.87);
+        font-size: 14px;
+    }
+
+    .info_box .val mat-icon {
+        font-size: 14px;
+    }
+</style>
