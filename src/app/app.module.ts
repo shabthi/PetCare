@@ -15,6 +15,13 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { RegisterComponent } from './admin/register/register.component';
 import { LoginComponent } from './admin/login/login.component';
 import { LogoutComponent } from './admin/logout/logout.component';
+import { ReportComponent } from './admin/report/report.component';
+
+//Angular material modules
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +35,18 @@ import { LogoutComponent } from './admin/logout/logout.component';
     AdminComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    ReportComponent,
+    DailyReportComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    //Angular material modules
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
