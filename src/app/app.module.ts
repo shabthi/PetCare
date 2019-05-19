@@ -29,6 +29,9 @@ import { RequestsByDayComponent } from './admin/reports/charts/requests-by-day/r
 import { PetsByDayComponent } from './admin/reports/charts/pets-by-day/pets-by-day.component';
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
 
+import {PetService}from './shared/pet.service';
+import { PetCreateComponent } from './pet-create/pet-create.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +43,7 @@ import { RangeReportComponent } from './admin/reports/range-report/range-report.
     PetProfileComponent,
     AdminComponent,
     RegisterComponent,
+    PetCreateComponent,
     LoginComponent,
     LogoutComponent,
     ReportComponent,
@@ -59,7 +63,7 @@ import { RangeReportComponent } from './admin/reports/range-report/range-report.
     //Angular material modules
     BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [PetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
