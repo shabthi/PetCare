@@ -26,23 +26,34 @@
                 </div>
 
                 <div class="info_box" fxLayout="column">
-                    <div class="info_box title">New Requests</div>
+                    <div class="info_box title">Requests</div>
                     <div class="info_box val">
                         {{report.stats.requests}}
                     </div>
                 </div>
 
+                <div class="info_box" fxLayout="column">
+                        <div class="info_box title">New Pets</div>
+                        <div class="info_box val">
+                            {{report.stats.pets}}
+                        </div>
+                    </div>
+
             </mat-card>
         </div>
 
 
-        <mat-card fxLayout="row" fxLayoutGap="20px">
+        <mat-card fxLayout="row wrap" fxLayoutGap="20px">
 
-            <app-adoptions-by-day [start]="report.start" [end]="report.date" width="700" height="400">
+            <app-adoptions-by-day [start]="report.start" [end]="report.date" width="450" height="300">
             </app-adoptions-by-day>
 
-            <app-requests-by-day [start]="report.start" [end]="report.date" width="700" height="400">
+            <app-requests-by-day [start]="report.start" [end]="report.date" width="450" height="300">
             </app-requests-by-day>
+
+            <app-pets-by-day [start]="report.start" [end]="report.date" width="450" height="300">
+                </app-pets-by-day>
+    
 
 
         </mat-card>

@@ -117,4 +117,19 @@ router.post('/stats/requests-by-day', (req, res, next) => {
         });
 });
 
+router.post('/stats/pets-by-day', (req, res, next) => {
+    var start = req.body.start;
+    var end = req.body.end;
+
+    Stats.petsByDay(start, end)
+        .then(function (result) {
+            res.status(200);
+            res.json(result);
+        })
+        .catch(function (error) {
+            res.status(500);
+            res.json(error);
+        });
+});
+
 module.exports = router;

@@ -18,7 +18,8 @@ export class DailyReportComponent implements OnInit {
 
     stats: {
       adoptions: 0,
-      requests: 0
+      requests: 0,
+      pets:0
     }
 
   }
@@ -60,11 +61,17 @@ export class DailyReportComponent implements OnInit {
         self.report.stats.requests = 0;
       });
 
+      this.reportService.petsByDay(this.report.date, this.report.date)
+      .then(function (results) {
+        if (results[self.report.date] == undefined) results[self.report.date] = 0;
+        self.report.stats.pets = results[self.report.date];
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.stats.pets = 0;
+      });
+
   }
 
-  nextDay() {
-    this.route.snapshot.params['date'] = this.report.next;
-    this.ngOnInit();
-  }
 
 }
