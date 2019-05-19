@@ -22,8 +22,10 @@ export class ReportComponent implements OnInit {
 
   generate(){
     let date = moment(this.report.date1).format("YYYY-MM-DD");
+    let date2 = moment(this.report.date2).format("YYYY-MM-DD");
     //console.log(date);
-    this.router.navigate(['/admin/reports/' + this.report.type + '/' + date]);
+    if(this.report.type == "daily") this.router.navigate(['/admin/reports/' + this.report.type + '/' + date]);
+    if(this.report.type == "range") this.router.navigate(['/admin/reports/' + this.report.type + '/' + date + '/' + date2]);
   }
 
 }

@@ -27,6 +27,7 @@ import { ChartsComponent } from './admin/reports/charts/charts.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { RequestsByDayComponent } from './admin/reports/charts/requests-by-day/requests-by-day.component';
 import { PetsByDayComponent } from './admin/reports/charts/pets-by-day/pets-by-day.component';
+import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PetsByDayComponent } from './admin/reports/charts/pets-by-day/pets-by-d
     AdoptionsByDayComponent,
     ChartsComponent,
     RequestsByDayComponent,
-    PetsByDayComponent
+    PetsByDayComponent,
+    RangeReportComponent
   ],
   imports: [
     BrowserModule,
