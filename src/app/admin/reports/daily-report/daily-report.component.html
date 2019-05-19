@@ -13,7 +13,7 @@
         <div class="info_box" fxLayout="column">
             <div class="info_box title">New Requests</div>
             <div class="info_box val">
-               44
+               {{report.stats.requests}}
             </div>
         </div>
 
@@ -21,7 +21,10 @@
 
     <mat-card fxLayout="row" fxLayoutGap="20px">
 
-            <app-adoptions-by-day [start]="report.start" [end]="report.date"></app-adoptions-by-day>
+            <app-adoptions-by-day [start]="report.start" [end]="report.date" width="700" height="400"></app-adoptions-by-day>
+
+            <app-requests-by-day [start]="report.start" [end]="report.date" width="700" height="400"></app-requests-by-day>
+
     
         </mat-card>
   </div>

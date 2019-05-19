@@ -15,7 +15,8 @@ export class DailyReportComponent implements OnInit {
     start: "",
 
     stats: {
-      adoptions: 0
+      adoptions: 0,
+      requests: 0
     }
 
   }
@@ -37,6 +38,16 @@ export class DailyReportComponent implements OnInit {
       .catch(function (error) {
         console.log(error);
         self.report.stats.adoptions = 0;
+      });
+
+      this.reportService.requestsByDay(this.report.date, this.report.date)
+      .then(function (results) {
+        if(results[self.report.date] == undefined) results[self.report.date] = 0;
+        self.report.stats.requests = results[self.report.date];
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.stats.requests = 0;
       });
 
   }
