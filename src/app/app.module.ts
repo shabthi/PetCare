@@ -25,6 +25,9 @@ import { DailyReportComponent } from './admin/reports/daily-report/daily-report.
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
 import { ChartsComponent } from './admin/reports/charts/charts.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { RequestsByDayComponent } from './admin/reports/charts/requests-by-day/requests-by-day.component';
+import { PetsByDayComponent } from './admin/reports/charts/pets-by-day/pets-by-day.component';
+import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
 
 import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
@@ -46,7 +49,10 @@ import { PetCreateComponent } from './pet-create/pet-create.component';
     ReportComponent,
     DailyReportComponent,
     AdoptionsByDayComponent,
-    ChartsComponent
+    ChartsComponent,
+    RequestsByDayComponent,
+    PetsByDayComponent,
+    RangeReportComponent
   ],
   imports: [
     BrowserModule,

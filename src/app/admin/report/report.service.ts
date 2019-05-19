@@ -26,4 +26,40 @@ export class ReportService {
         });
     });
   }
+
+  requestsByDay(start: string, end: string) {
+    let self = this;
+    return new Promise(function (resolve, reject) {
+      let url = "http://localhost:8080/stats/requests-by-day"
+      self.http.post(url,
+        {
+          start: start,
+          end: end
+        }).toPromise()
+        .then(function (results) {
+          resolve(results);
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  petsByDay(start: string, end: string) {
+    let self = this;
+    return new Promise(function (resolve, reject) {
+      let url = "http://localhost:8080/stats/pets-by-day"
+      self.http.post(url,
+        {
+          start: start,
+          end: end
+        }).toPromise()
+        .then(function (results) {
+          resolve(results);
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
 }
