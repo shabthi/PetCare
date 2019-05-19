@@ -13,6 +13,8 @@ export class DailyReportComponent implements OnInit {
 
     date: "",
     start: "",
+    prev: "",
+    next: "",
 
     stats: {
       adoptions: 0,
@@ -22,17 +24,25 @@ export class DailyReportComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute, private reportService: ReportService) {
-    this.report.date = this.route.snapshot.params['date'];
-    this.report.start = new Date(new Date(this.report.date).setDate(new Date(this.report.date).getDate() - 6)).toISOString().split("T")[0];
+    this.route.params.subscribe(params => {
+      this.ngOnInit(); // reset and set based on new parameter this time
+    });
   }
 
+
   ngOnInit() {
+
+    
+    this.report.date = this.route.snapshot.params['date'];
+    this.report.start = new Date(new Date(this.report.date).setDate(new Date(this.report.date).getDate() - 4)).toISOString().split("T")[0];
+    this.report.prev = new Date(new Date(this.report.date).setDate(new Date(this.report.date).getDate() - 1)).toISOString().split("T")[0];
+    this.report.next = new Date(new Date(this.report.date).setDate(new Date(this.report.date).getDate() + 1)).toISOString().split("T")[0];
 
     let self = this;
 
     this.reportService.adoptionsByDay(this.report.date, this.report.date)
       .then(function (results) {
-        if(results[self.report.date] == undefined) results[self.report.date] = 0;
+        if (results[self.report.date] == undefined) results[self.report.date] = 0;
         self.report.stats.adoptions = results[self.report.date];
       })
       .catch(function (error) {
@@ -40,9 +50,9 @@ export class DailyReportComponent implements OnInit {
         self.report.stats.adoptions = 0;
       });
 
-      this.reportService.requestsByDay(this.report.date, this.report.date)
+    this.reportService.requestsByDay(this.report.date, this.report.date)
       .then(function (results) {
-        if(results[self.report.date] == undefined) results[self.report.date] = 0;
+        if (results[self.report.date] == undefined) results[self.report.date] = 0;
         self.report.stats.requests = results[self.report.date];
       })
       .catch(function (error) {
@@ -50,6 +60,11 @@ export class DailyReportComponent implements OnInit {
         self.report.stats.requests = 0;
       });
 
+  }
+
+  nextDay() {
+    this.route.snapshot.params['date'] = this.report.next;
+    this.ngOnInit();
   }
 
 }

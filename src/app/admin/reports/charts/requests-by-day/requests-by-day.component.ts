@@ -41,7 +41,7 @@ export class RequestsByDayComponent extends ChartsComponent {
       lineWidth: this.width / 200,
       pointSize: this.width / 100,
       animation: {
-        duration: 2000,
+        duration: 750,
         easing: "out",
         startup: true
       }

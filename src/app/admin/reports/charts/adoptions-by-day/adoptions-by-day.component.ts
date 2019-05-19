@@ -9,7 +9,7 @@ import { ReportService } from 'src/app/admin/report/report.service';
   styleUrls: ['./adoptions-by-day.component.css']
 })
 export class AdoptionsByDayComponent extends ChartsComponent {
-  
+
   public chartData: GoogleChartInterface = {
     chartType: 'LineChart',
     dataTable: [
@@ -37,7 +37,7 @@ export class AdoptionsByDayComponent extends ChartsComponent {
       lineWidth: this.width / 200,
       pointSize: this.width / 100,
       animation: {
-        duration: 2000,
+        duration: 750,
         easing: "out",
         startup: true
       }
@@ -46,42 +46,42 @@ export class AdoptionsByDayComponent extends ChartsComponent {
 
 
 
-  constructor(private reportService:ReportService) {
+  constructor(private reportService: ReportService) {
     super();
   }
 
   ngOnInit() {
     super.setParams();
-    this.chartData.dataTable = [ ['Date', '# of Adoptions']];
+    this.chartData.dataTable = [['Date', '# of Adoptions']];
 
     var self = this;
 
     this.reportService.adoptionsByDay(this.start, this.end)
-    .then(function(results){
-      let s = new Date(self.start);
-      let e = new Date(self.end);
-      while(s <= e){
-        let s_str = s.toISOString().split("T")[0];
-        let a;
-        try{
-          if(results[s_str] == undefined) results[s_str] = 0;
-          a = [s_str, results[s_str]];
+      .then(function (results) {
+        let s = new Date(self.start);
+        let e = new Date(self.end);
+        while (s <= e) {
+          let s_str = s.toISOString().split("T")[0];
+          let a;
+          try {
+            if (results[s_str] == undefined) results[s_str] = 0;
+            a = [s_str, results[s_str]];
+          }
+          catch (err) {
+            a = [s_str, 0];
+          }
+          finally {
+            self.chartData.dataTable.push(a);
+          }
+          s.setDate(s.getDate() + 1);
         }
-        catch(err){
-          a = [s_str, 0];
-        }
-        finally{
-          self.chartData.dataTable.push(a);
-        }
-        s.setDate(s.getDate() + 1);
-      }
-      self.loaded = true;
-      console.log(self.chartData.dataTable);
-    })
-    .catch(function(error){
-      console.log(error);
-      self.error = true;
-    })
+        self.loaded = true;
+        console.log(self.chartData.dataTable);
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.error = true;
+      })
 
   }
 
