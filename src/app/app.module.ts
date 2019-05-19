@@ -14,6 +14,9 @@ import { PetProfileComponent } from './pet-profile/pet-profile.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { RegisterComponent } from './admin/register/register.component';
 
+import {PetService}from './shared/pet.service';
+import { PetCreateComponent } from './pet-create/pet-create.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,8 @@ import { RegisterComponent } from './admin/register/register.component';
     AboutComponent,
     PetProfileComponent,
     AdminComponent,
-    RegisterComponent
+    RegisterComponent,
+    PetCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { RegisterComponent } from './admin/register/register.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [PetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

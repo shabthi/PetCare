@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PetProfileComponent } from './pet-profile/pet-profile.component';
+import { PetCreateComponent } from "./pet-create/pet-create.component";
 import { RegisterComponent } from './admin/register/register.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'petProfile', component: PetProfileComponent },
+  { path: 'petCreate', component: PetCreateComponent },
   { path: 'admin/register', component: RegisterComponent }
 ];
 
