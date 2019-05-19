@@ -1,0 +1,42 @@
+<style>
+  form .error{
+    color:red;
+    font-size:10px;
+  }
+</style>
+
+<div class="row justify-content-center">
+    <form class="border border-light p-5 col-4">
+
+        <p class="h4 mb-4 text-center">Admin Log In</p>
+      
+        <div class="alert alert-danger" *ngIf="error">
+            {{error_message}}
+        </div>
+
+        <input type="email" name="email" class="form-control mb-4" placeholder="E-mail" [(ngModel)]="form.email" (ngModelChange)="error = false">
+        <input type="password" name="password" class="form-control mb-4" placeholder="Password" [(ngModel)]="form.password" (ngModelChange)="error = false">
+      
+        <button class="btn btn-info btn-block my-4" type="submit" (click)="submit()">Sign in</button>
+      
+        <div class="text-center">
+            <p>Not a member?
+                <a href="">Sign up</a>
+            </p>
+      
+            <!--<p>or sign in with:</p>
+            <a type="button" class="light-blue-text mx-2">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a type="button" class="light-blue-text mx-2">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a type="button" class="light-blue-text mx-2">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a type="button" class="light-blue-text mx-2">
+                <i class="fab fa-github"></i>
+            </a>-->
+        </div>
+      </form>
+</div>

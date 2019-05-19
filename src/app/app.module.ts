@@ -13,6 +13,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { PetProfileComponent } from './pet-profile/pet-profile.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { RegisterComponent } from './admin/register/register.component';
+import { LoginComponent } from './admin/login/login.component';
+import { LogoutComponent } from './admin/logout/logout.component';
+import { ReportComponent } from './admin/report/report.component';
+
+//Angular material modules
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
+import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
+import { ChartsComponent } from './admin/reports/charts/charts.component';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
@@ -28,13 +40,22 @@ import { PetCreateComponent } from './pet-create/pet-create.component';
     PetProfileComponent,
     AdminComponent,
     RegisterComponent,
-    PetCreateComponent
+    PetCreateComponent,
+    LoginComponent,
+    LogoutComponent,
+    ReportComponent,
+    DailyReportComponent,
+    AdoptionsByDayComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2GoogleChartsModule,
+    //Angular material modules
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule
   ],
   providers: [PetService],
   bootstrap: [AppComponent]

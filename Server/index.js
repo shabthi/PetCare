@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/PetCare', { useNewUrlParser: true })
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use('/',appRoutes);
+//app.use('/',appRoutes);
 
 
 
@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 
 //JSON application
 //const bodyParser = require("body-parser");
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 //app.use('/', appRoutes);
 
