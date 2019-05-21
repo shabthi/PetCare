@@ -15,6 +15,22 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { RegisterComponent } from './admin/register/register.component';
 import { LoginComponent } from './admin/login/login.component';
 import { LogoutComponent } from './admin/logout/logout.component';
+import { ReportComponent } from './admin/report/report.component';
+
+//Angular material modules
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
+import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
+import { ChartsComponent } from './admin/reports/charts/charts.component';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { RequestsByDayComponent } from './admin/reports/charts/requests-by-day/requests-by-day.component';
+import { PetsByDayComponent } from './admin/reports/charts/pets-by-day/pets-by-day.component';
+import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
+
+import {PetService}from './shared/pet.service';
+import { PetCreateComponent } from './pet-create/pet-create.component';
 
 @NgModule({
   declarations: [
@@ -27,16 +43,27 @@ import { LogoutComponent } from './admin/logout/logout.component';
     PetProfileComponent,
     AdminComponent,
     RegisterComponent,
+    PetCreateComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    ReportComponent,
+    DailyReportComponent,
+    AdoptionsByDayComponent,
+    ChartsComponent,
+    RequestsByDayComponent,
+    PetsByDayComponent,
+    RangeReportComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2GoogleChartsModule,
+    //Angular material modules
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [PetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,42 @@
+<div fxLayout="column" style="margin-top:20px">
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxLayout="column" fxFlex="33" fxLayoutGap="20px">
+
+      <mat-card-title>Generate Report</mat-card-title>
+
+      <mat-radio-group aria-label="Select Report Type" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px"
+        [(ngModel)]="report.type">
+        <mat-radio-button value="daily">Daily Report</mat-radio-button>
+        <mat-radio-button value="range">Range Report</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field *ngIf="report.type=='daily'">
+        <input matInput [matDatepicker]="picker" placeholder="Select Date" [(ngModel)]="report.date1">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div *ngIf="report.type=='range'" fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field >
+          <input matInput [matDatepicker]="picker" placeholder="Start Date" [(ngModel)]="report.date1">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="report.type=='range'">
+          <input matInput [matDatepicker]="picker" placeholder="End Date" [(ngModel)]="report.date2">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+      </div>
+
+      <button mat-raised-button color="primary" (click)="generate()">Generate Report</button>
+
+
+
+
+    </mat-card>
+  </div>
+</div>
