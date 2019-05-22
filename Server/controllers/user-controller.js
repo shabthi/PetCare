@@ -46,25 +46,25 @@ exports.userSignup = (req, res, next) => {
 exports.userLogin = (req, res, next) => {
     User.find({ email: req.body.email }).exec()
         .then(user => {
-            if(user.length < 1) {
+            if (user.length < 1) {
                 res.status(401).json({
                     message: 'Auth failed'
                 });
             }
             bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-                if(err) {
+                if (err) {
                     res.status(401).json({
                         message: 'Auth failed'
                     });
                 }
-                if(result) {
+                if (result) {
                     const token = jwt.sign({
                         email: user[0].email,
                         userId: user[0]._id,
                     }, process.env.JWT_KEY,
-                    {
-                        expiresIn: "1h"
-                    });
+                        {
+                            expiresIn: "1h"
+                        });
                     return res.status(200).json({
                         message: 'Auth successful',
                         token: token
@@ -75,6 +75,33 @@ exports.userLogin = (req, res, next) => {
                 });
 
             });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+// User profile update
+exports.userUpdate = (req, res, next) => {
+    const id = req.params.userId;
+    const updateOps = {};
+    for (const ops of req.body) {
+        updateOps[ops.propName] = ops.value;
+    }
+    User.update({ _id: id }, { $set: updateOps }).exec()
+        .then(result => {
+            console.log(result);
+            if (result.ok == 1) {
+                res.status(200).json({
+                    message: 'Profile updated'
+                });
+            } else {
+                res.status(500).json({
+                    message: 'Profile does not updated!'
+                });
+            }
         })
         .catch(err => {
             res.status(500).json({
