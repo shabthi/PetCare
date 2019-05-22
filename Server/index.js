@@ -9,6 +9,7 @@ var port = process.env.PORT || 8080;
 var express = require('express');
 var app = express();
 var appRoutes = require('./routes/appRoute');
+var userRoutes = require('./routes/user-routes');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 //app.use('/',appRoutes);
+app.use('/user', userRoutes);
 
 
 
