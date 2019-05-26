@@ -11,6 +11,7 @@ import { LogoutComponent } from './admin/logout/logout.component';
 import { ReportComponent } from './admin/report/report.component';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
+import { AddItemComponent } from './inventory/add-item/add-item.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'admin/reports', component:ReportComponent},
   { path: 'admin/reports/daily/:date', component:DailyReportComponent},
   { path: 'admin/reports/range/:start/:end', component:RangeReportComponent},
+  { path: 'addItem', component:AddItemComponent},
 
 
 ];
