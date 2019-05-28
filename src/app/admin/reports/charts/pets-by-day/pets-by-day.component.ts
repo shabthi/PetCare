@@ -11,6 +11,8 @@ import { ReportService } from 'src/app/admin/report/report.service';
 })
 export class PetsByDayComponent extends ChartsComponent {
 
+  description = "Pets that were put up for adoption by users";
+
   public chartData: GoogleChartInterface = {
     chartType: 'LineChart',
     dataTable: [

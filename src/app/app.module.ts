@@ -19,19 +19,21 @@ import { ReportComponent } from './admin/report/report.component';
 
 //Angular material modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule } from '@angular/material';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
 import { ChartsComponent } from './admin/reports/charts/charts.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { CountUpModule } from 'countup.js-angular2';
+
 import { RequestsByDayComponent } from './admin/reports/charts/requests-by-day/requests-by-day.component';
 import { PetsByDayComponent } from './admin/reports/charts/pets-by-day/pets-by-day.component';
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
-
 import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { AddItemComponent } from './inventory/add-item/add-item.component';
     RequestsByDayComponent,
     PetsByDayComponent,
     RangeReportComponent,
-    AddItemComponent
+    AddItemComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +65,9 @@ import { AddItemComponent } from './inventory/add-item/add-item.component';
     FormsModule,
     HttpClientModule,
     Ng2GoogleChartsModule,
+    CountUpModule,
     //Angular material modules
-    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule
   ],
   providers: [PetService],
   bootstrap: [AppComponent]
