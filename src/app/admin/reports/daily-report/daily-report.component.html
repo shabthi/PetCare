@@ -8,8 +8,10 @@
 
 
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                    <button mat-raised-button routerLink="/admin/reports/daily/{{report.prev}}" style="color:#3a539b">Previous Day</button>
-                    <button mat-raised-button routerLink="/admin/reports/daily/{{report.next}}" style="color:#3a539b">Next Day</button>
+                <button mat-raised-button routerLink="/admin/reports/daily/{{report.prev}}"
+                    style="color:#3a539b">Previous Day</button>
+                <button mat-raised-button routerLink="/admin/reports/daily/{{report.next}}" style="color:#3a539b">Next
+                    Day</button>
             </div>
 
 
@@ -17,11 +19,21 @@
 
         <div fxLayout="column" fxLayoutAlign="start start">
             <mat-card fxLayout="row" fxLayoutGap="20px">
-
                 <div class="info_box" fxLayout="column">
                     <div class="info_box title">Adoptions</div>
                     <div class="info_box val">
                         {{report.stats.adoptions}}
+                        <span *ngIf="report.changes.adoptions > 0" style="color:green">
+                            (+{{report.changes.adoptions}})
+                            <mat-icon>trending_up</mat-icon>
+                        </span>
+                        <span *ngIf="report.changes.adoptions < 0" style="color:red">
+                            ({{report.changes.adoptions}})
+                            <mat-icon>trending_down</mat-icon>
+                        </span>
+
+                        <span *ngIf="report.changes.adoptions == 0" style="color:grey">(-)
+                        </span>
                     </div>
                 </div>
 
@@ -29,15 +41,37 @@
                     <div class="info_box title">Requests</div>
                     <div class="info_box val">
                         {{report.stats.requests}}
+                        <span *ngIf="report.changes.requests > 0" style="color:green">
+                            (+{{report.changes.requests}})
+                            <mat-icon>trending_up</mat-icon>
+                        </span>
+                        <span *ngIf="report.changes.requests < 0" style="color:red">
+                            ({{report.changes.requests}})
+                            <mat-icon>trending_down</mat-icon>
+                        </span>
+
+                        <span *ngIf="report.changes.requests == 0" style="color:grey">(-)
+                        </span>
                     </div>
                 </div>
 
                 <div class="info_box" fxLayout="column">
-                        <div class="info_box title">New Pets</div>
-                        <div class="info_box val">
-                            {{report.stats.pets}}
-                        </div>
+                    <div class="info_box title">New Pets</div>
+                    <div class="info_box val">
+                        {{report.stats.pets}}
+                        <span *ngIf="report.changes.pets > 0" style="color:green">
+                            (+{{report.changes.pets}})
+                            <mat-icon>trending_up</mat-icon>
+                        </span>
+                        <span *ngIf="report.changes.pets < 0" style="color:red">
+                            ({{report.changes.pets}})
+                            <mat-icon>trending_down</mat-icon>
+                        </span>
+
+                        <span *ngIf="report.changes.pets == 0" style="color:grey">(-)
+                        </span>
                     </div>
+                </div>
 
             </mat-card>
         </div>
@@ -52,8 +86,8 @@
             </app-requests-by-day>
 
             <app-pets-by-day [start]="report.start" [end]="report.date" width="450" height="300">
-                </app-pets-by-day>
-    
+            </app-pets-by-day>
+
 
 
         </mat-card>

@@ -12,7 +12,7 @@
       </mat-radio-group>
 
       <mat-form-field *ngIf="report.type=='daily'">
-        <input matInput [matDatepicker]="picker" placeholder="Select Date" [(ngModel)]="report.date1">
+        <input matInput [matDatepicker]="picker" placeholder="Select Date" [(ngModel)]="report.date2">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
