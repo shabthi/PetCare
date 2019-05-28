@@ -1,1 +1,25 @@
-<app-range-report [start]="week_start" [end]="today" dashboard=true></app-range-report>
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="space-around space-around" fxLayoutGap="100px">
+
+        <mat-card fxLayout="column" fxLayoutAlign="center center"
+            style="background-color:#26a65b; color:white; width:400px;">
+            <div style="font-size:40px; font-weight:bold;">Total Adoptions</div>
+            <div style="font-size:100px;" [countUp]="total.adoptions">0</div>
+        </mat-card>
+
+        <mat-card fxLayout="column" fxLayoutAlign="center center"
+            style="background-color:#e67e22; color:white; width:400px;">
+            <div style="font-size:40px; font-weight:bold;">Pending Requests</div>
+            <div style="font-size:100px;" [countUp]="total.waiting">0</div>
+        </mat-card>
+
+        <mat-card fxLayout="column" fxLayoutAlign="center center"
+            style="background-color:#8e44ad; color:white; width:400px;">
+            <div style="font-size:40px; font-weight:bold;">Pets Waiting</div>
+            <div style="font-size:100px;" [countUp]="total.waiting">0</div>
+        </mat-card>
+
+    </div>
+
+    <app-range-report [start]="week_start" [end]="today" dashboard=true></app-range-report>
+</div>
