@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+<form #frm="ngForm" class="border border-light p-5 col-4"(ngSubmit)="register(frm)">
+
+  <p class="h4 mb-4 text-center">Register Permenent Doner</p>
+
+  <div class="form-group">
+    <label >Full Name</label>
+    <input type="text" class="form-control" name="fname" placeholder="Enter Full Name" 
+    ngModel 
+    required
+    pattern="[a-zA-Z][a-zA-Z]+" 
+    >
+  </div>
+
+  <div class="form-group">
+    <label >Address</label>
+    <input type="text" class="form-control" name="address"  placeholder="Enter Address" 
+    ngModel 
+    required
+     
+    >
+  </div>
+  
+  <div class="form-group">
+    <label >Email</label>
+    <input type="text" class="form-control" name="email"  placeholder="Enter Email" 
+    ngModel 
+    required
+    pattern="^\w+([w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" 
+    >
+  </div>
+
+  <div class="form-group">
+    <label >Contact No</label>
+    <input type="text" class="form-control" name="contactno"  placeholder="Enter Contact no" 
+    ngModel 
+    required
+    pattern="[0-9]*"
+    >
+  </div>
+
+  
+  <button type="submit" class="btn btn-success" [disabled]="frm.invalid">Register</button>
+
+  <button class="btn btn-danger">Cancel</button>
+
+  
+
+</form>
+</div>
+
+{{frm.value | json}}
