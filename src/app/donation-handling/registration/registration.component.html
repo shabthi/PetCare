@@ -13,8 +13,16 @@
     >
   </div>
 
-  <div *ngIf="nameUser.errors?.required" class="alert alert-danger">
-    Full Name is Required
+  <div *ngIf="nameUser?.touched" class="alert alert-danger">
+
+    <div *ngIf="nameUser.errors?.required">
+       Full Name is Required!
+    </div>
+
+    <div *ngIf="nameUser.errors?.pattern">
+       Full Name is invalid!
+    </div>
+
   </div>
 
 
@@ -29,8 +37,12 @@
     >
   </div>
 
-  <div *ngIf="addressUser.errors?.required" class="alert alert-danger">
-    Address is Required
+  <div *ngIf="addressUser?.touched" class="alert alert-danger">
+
+    <div *ngIf="addressUser.errors?.required">
+       Address is Required!
+    </div>
+
   </div>
 
 
@@ -45,8 +57,16 @@
     >
   </div>
 
-  <div *ngIf="emailUser.errors?.required" class="alert alert-danger">
-    Email is Required
+  <div *ngIf="emailUser?.touched" class="alert alert-danger">
+
+    <div *ngIf="emailUser.errors?.required">
+       Email is Required!
+    </div>
+
+    <div *ngIf="emailUser.errors?.pattern">
+       Email is invalid!
+    </div>
+
   </div>
 
 
@@ -57,22 +77,31 @@
     ngModel 
     #contactUser="ngModel"
     required
+    maxlength="10"
+    minlength="10" 
     pattern="[0-9]*"
     >
   </div>
 
-  <div *ngIf="contactUser.errors?.required" class="alert alert-danger">
-    Contact No is Required
+  <div *ngIf="contactUser?.touched" class="alert alert-danger">
+
+    <div *ngIf="contactUser.errors?.required" >
+       Contact No is Required!
+    </div>
+
+    <div [hidden]="!contactUser?.hasError('minlength')">
+       Contact No is invalid!
+    </div>
+
   </div>
 
   
   <button type="submit" class="btn btn-success" [disabled]="frm.invalid">Register</button>
 
-  <button class="btn btn-danger">Cancel</button>
-
+  
   
 
 </form>
 </div>
 
-{{frm.value | json}}
+
