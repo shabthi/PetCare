@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -32,6 +33,7 @@ import { RangeReportComponent } from './admin/reports/range-report/range-report.
 import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
+import { InventoryService } from './inventory/inventory.service';
 
 @NgModule({
   declarations: [
@@ -62,10 +64,14 @@ import { AddItemComponent } from './inventory/add-item/add-item.component';
     FormsModule,
     HttpClientModule,
     Ng2GoogleChartsModule,
+    ReactiveFormsModule,
     //Angular material modules
     BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule
   ],
-  providers: [PetService],
+  providers: [
+    PetService,
+    InventoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
