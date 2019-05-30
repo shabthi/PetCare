@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+
 
 @Component({
   selector: 'app-registration',
@@ -7,8 +7,6 @@ import { User } from '../user';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
-	userList: User[] = [] ;
 
 	addUser(form){
 		console.log(form.value);
