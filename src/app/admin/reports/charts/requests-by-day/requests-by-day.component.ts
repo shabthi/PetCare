@@ -11,6 +11,8 @@ import { ReportService } from 'src/app/admin/report/report.service';
 })
 export class RequestsByDayComponent extends ChartsComponent {
 
+  description = "Requests for adoptions made by customers";
+
   public chartData: GoogleChartInterface = {
     chartType: 'LineChart',
     dataTable: [

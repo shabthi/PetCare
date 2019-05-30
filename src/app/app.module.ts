@@ -20,20 +20,22 @@ import { ReportComponent } from './admin/report/report.component';
 
 //Angular material modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
 import { ChartsComponent } from './admin/reports/charts/charts.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { CountUpModule } from 'countup.js-angular2';
+
 import { RequestsByDayComponent } from './admin/reports/charts/requests-by-day/requests-by-day.component';
 import { PetsByDayComponent } from './admin/reports/charts/pets-by-day/pets-by-day.component';
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
-
 import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { InventoryService } from './inventory/inventory.service';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { InventoryService } from './inventory/inventory.service';
     RequestsByDayComponent,
     PetsByDayComponent,
     RangeReportComponent,
-    AddItemComponent
+    AddItemComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +68,9 @@ import { InventoryService } from './inventory/inventory.service';
     HttpClientModule,
     Ng2GoogleChartsModule,
     ReactiveFormsModule,
+    CountUpModule,
     //Angular material modules
-    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule
   ],
   providers: [
     PetService,

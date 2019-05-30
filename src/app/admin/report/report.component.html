@@ -12,24 +12,40 @@
       </mat-radio-group>
 
       <mat-form-field *ngIf="report.type=='daily'">
-        <input matInput [matDatepicker]="picker" placeholder="Select Date" [(ngModel)]="report.date1">
+        <input matInput [matDatepicker]="picker" placeholder="Select Date" [(ngModel)]="report.date2">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
+      <mat-radio-group *ngIf="report.type=='daily'" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px"
+        [(ngModel)]="report.date2">
+        <mat-radio-button [value]="dates.today">Today</mat-radio-button>
+        <mat-radio-button [value]="dates.yesterday">Yesterday</mat-radio-button>
+        <mat-radio-button [value]="dates.seven_days">7 days ago</mat-radio-button>
+      </mat-radio-group>
+
+
       <div *ngIf="report.type=='range'" fxLayout="row" fxLayoutGap="20px">
-        <mat-form-field >
+        <mat-form-field>
           <input matInput [matDatepicker]="picker" placeholder="Start Date" [(ngModel)]="report.date1">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+
 
         <mat-form-field *ngIf="report.type=='range'">
           <input matInput [matDatepicker]="picker" placeholder="End Date" [(ngModel)]="report.date2">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        
+
+        <!--<mat-radio-group *ngIf="report.type=='range'" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px"
+        [(ngModel)]="report.date2">
+        <mat-radio-button [value]="dates.today">This week</mat-radio-button>
+        <mat-radio-button [value]="dates.yesterday">This month</mat-radio-button>
+        <mat-radio-button [value]="dates.seven_days">This year</mat-radio-button>
+      </mat-radio-group>-->
+
       </div>
 
       <button mat-raised-button color="primary" (click)="generate()">Generate Report</button>

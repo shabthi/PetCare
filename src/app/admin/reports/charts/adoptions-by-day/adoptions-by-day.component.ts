@@ -10,6 +10,8 @@ import { ReportService } from 'src/app/admin/report/report.service';
 })
 export class AdoptionsByDayComponent extends ChartsComponent {
 
+  description = "Successful adoptions that were conducted through the service";
+
   public chartData: GoogleChartInterface = {
     chartType: 'LineChart',
     dataTable: [
