@@ -32,6 +32,7 @@ import { RangeReportComponent } from './admin/reports/range-report/range-report.
 import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
 import { RegistrationComponent } from './donation-handling/registration/registration.component';
+import { MainpageComponent } from './donation-handling/mainpage/mainpage.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { RegistrationComponent } from './donation-handling/registration/registra
     RequestsByDayComponent,
     PetsByDayComponent,
     RangeReportComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,
