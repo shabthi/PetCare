@@ -26,13 +26,11 @@ export class AuthService {
   }
 
   getName(){
-    return "A";
-    //return JSON.parse(localStorage.getItem('user')).name;
+    return JSON.parse(localStorage.getItem('user')).name;
   }
   
   getType(){
-    return "C";
-    //return JSON.parse(localStorage.getItem('user')).type;
+    return JSON.parse(localStorage.getItem('user')).type;
   }
 
 }
