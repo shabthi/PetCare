@@ -1,34 +1,40 @@
 <div id="content" class="container-fluid">
   <h1>Add New Item</h1>
   <br>
-  <form>
+  <form [formGroup]="angForm" novalidate>
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label">Name</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="name" placeholder="Name">
+        <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" #name>
       </div>
     </div>
     <div class="form-group row">
       <label for="code" class="col-sm-2 col-form-label">Code</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="code" placeholder="Code">
+        <input type="text" class="form-control" id="code" placeholder="Code" formControlName="code" #code>
       </div>
     </div>
     <div class="form-group row">
       <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="quantity" placeholder="Quantity">
+        <input type="number" class="form-control" id="quantity" placeholder="Quantity" formControlName="quantity" #quantity>
       </div>
     </div>
     <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label">Description</label>
       <div class="col-sm-10">
-        <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+        <textarea class="form-control" id="description" rows="3" placeholder="Description" formControlName="description" #description></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="reorderLevel" class="col-sm-2 col-form-label">Reorder Level</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="reorderLevel" placeholder="Reorder Level" formControlName="reorderLevel" #reorderLevel>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Add Item</button>
+        <button (click)="addItem(name.value, code.value, quantity.value, description.value, reorderLevel.value)" class="btn btn-primary">Add Item</button>
       </div>
     </div>
   </form>
