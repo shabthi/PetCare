@@ -39,7 +39,6 @@ export class DailyReportComponent implements OnInit {
 
 
   async ngOnInit() {
-
     
     this.report.date = this.route.snapshot.params['date'];
     this.report.start = new Date(new Date(this.report.date).setDate(new Date(this.report.date).getDate() - 4)).toISOString().split("T")[0];
