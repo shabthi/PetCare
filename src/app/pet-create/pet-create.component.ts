@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PetService } from '../shared/pet.service';
 import { Pet } from '../pet';
 import {Router} from '@angular/router'; 
-
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 @Component({
   selector: 'app-pet-create',
   templateUrl: './pet-create.component.html',
@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class PetCreateComponent implements OnInit {
   private pet:Pet;
+  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
   constructor(private petService:PetService,private router:Router) { }
 
   ngOnInit() {

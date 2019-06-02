@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FileSelectDirective } from 'ng2-file-upload';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -34,6 +34,7 @@ import { PetCreateComponent } from './pet-create/pet-create.component';
 
 @NgModule({
   declarations: [
+    FileSelectDirective,
     AppComponent,
     HeaderComponent,
     NavigationComponent,

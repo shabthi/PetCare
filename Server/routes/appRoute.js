@@ -55,7 +55,7 @@ router.delete('/delete/:id',(req,res,next)=> {
             res.status(500).json({ errmsg: err});
         res.status(200).json({msg:animal});
     });
-    //res.status(200).json({msg:'Delete request workng'});
+    
 });
 
 
