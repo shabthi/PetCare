@@ -13,6 +13,7 @@ import { DailyReportComponent } from './admin/reports/daily-report/daily-report.
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: 'items' , component:ItemsComponent},
   { path: 'updateItem/:id' , component:UpdateItemComponent},
 
-
+  { path: 'signup', component:SignupComponent},
 ];
 
 @NgModule({

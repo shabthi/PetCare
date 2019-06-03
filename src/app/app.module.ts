@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './shared/user.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,7 +21,7 @@ import { ReportComponent } from './admin/report/report.component';
 
 //Angular material modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatDialogModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
@@ -36,6 +37,7 @@ import { PetCreateComponent } from './pet-create/pet-create.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { InventoryService } from './inventory/inventory.service';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 
@@ -62,8 +64,12 @@ import { UpdateItemComponent } from './inventory/update-item/update-item.compone
     RangeReportComponent,
     AddItemComponent,
     DashboardComponent,
+<<<<<<< HEAD
+    SignupComponent,
+=======
     ItemsComponent,
     UpdateItemComponent,
+>>>>>>> 2a7e4b6ab594d74fb6c974223ed617c21b675ca1
   ],
   imports: [
     BrowserModule,
@@ -78,7 +84,8 @@ import { UpdateItemComponent } from './inventory/update-item/update-item.compone
   ],
   providers: [
     PetService,
-    InventoryService
+    InventoryService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
