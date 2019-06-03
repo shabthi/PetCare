@@ -36,6 +36,8 @@ import { PetCreateComponent } from './pet-create/pet-create.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { InventoryService } from './inventory/inventory.service';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ItemsComponent } from './inventory/items/items.component';
+import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     PetsByDayComponent,
     RangeReportComponent,
     AddItemComponent,
-    DashboardComponent
+    DashboardComponent,
+    ItemsComponent,
+    UpdateItemComponent,
   ],
   imports: [
     BrowserModule,
