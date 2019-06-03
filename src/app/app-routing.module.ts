@@ -14,6 +14,8 @@ import { RangeReportComponent } from './admin/reports/range-report/range-report.
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
+import { ItemsComponent } from './inventory/items/items.component';
+import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'admin/reports/daily/:date', component:DailyReportComponent},
   { path: 'admin/reports/range/:start/:end', component:RangeReportComponent},
   { path: 'addItem', component:AddItemComponent},
+  { path: 'items' , component:ItemsComponent},
+  { path: 'updateItem/:id' , component:UpdateItemComponent},
 
   { path: 'signup', component:SignupComponent},
 ];

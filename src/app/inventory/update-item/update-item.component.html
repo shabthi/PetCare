@@ -1,7 +1,7 @@
 <div id="content" class="container-fluid">
-  <h1>Add New Item</h1>
+  <h1>Edit Item</h1>
   <br>
-  <form [formGroup]="angForm" novalidate>
+  <form [formGroup]="updateForm" novalidate>
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label">Name</label>
       <div class="col-sm-10">
@@ -36,8 +36,8 @@
       <div class="col-sm-1">
         <button type="button" class="btn btn-primary" routerLink="/items">Back</button>
       </div>
-      <div class="col-sm-11"> 
-        <button type="submit" (click)="addItem(name.value, code.value, quantity.value, description.value, reorderLevel.value)" class="btn btn-primary">Add Item</button>
+      <div class="col-sm-11">
+        <button type="submit" (click)="updateItem(name.value, code.value, quantity.value, description.value, reorderLevel.value)" [disabled]="updateForm.invalid" class="btn btn-primary">Update Item</button>
       </div>
     </div>
   </form>
