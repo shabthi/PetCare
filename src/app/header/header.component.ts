@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,4 @@ export class HeaderComponent implements OnInit {
   getUserType():String{
     if(this.authService.isLogged()) return this.authService.getType();
   }
-
 }
-

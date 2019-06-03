@@ -13,6 +13,7 @@ import { DailyReportComponent } from './admin/reports/daily-report/daily-report.
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -29,7 +30,7 @@ const routes: Routes = [
   { path: 'admin/reports/range/:start/:end', component:RangeReportComponent},
   { path: 'addItem', component:AddItemComponent},
 
-
+  { path: 'signup', component:SignupComponent},
 ];
 
 @NgModule({
