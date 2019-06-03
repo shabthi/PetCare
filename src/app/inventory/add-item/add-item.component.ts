@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { InventoryService } from '../../inventory/inventory.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AddItemComponent implements OnInit {
 
   angForm:FormGroup;
 
-  constructor(private inventoryservice: InventoryService, private fb: FormBuilder) {
+  constructor(private inventoryservice: InventoryService, private fb: FormBuilder, private router: Router) {
     this.createForm();
   }
 
@@ -25,8 +26,15 @@ export class AddItemComponent implements OnInit {
    });
   }
 
+  // addItem(name, code, quantity, description, reorderLevel) {
+  //   this.inventoryservice.addItem(name, code, quantity, description, reorderLevel).subscribe(()=>{
+  //     this.router.navigate(['/items']);
+  //   });
+  // }
   addItem(name, code, quantity, description, reorderLevel) {
-    this.inventoryservice.addItem(name, code, quantity, description, reorderLevel);
+    this.inventoryservice.addItem(name, code, quantity, description, reorderLevel).subscribe(() => {
+      this.router.navigate(['/items']);
+    });
   }
 
   ngOnInit() {
