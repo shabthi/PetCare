@@ -40,6 +40,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -64,12 +65,10 @@ import { UpdateItemComponent } from './inventory/update-item/update-item.compone
     RangeReportComponent,
     AddItemComponent,
     DashboardComponent,
-<<<<<<< HEAD
     SignupComponent,
-=======
     ItemsComponent,
     UpdateItemComponent,
->>>>>>> 2a7e4b6ab594d74fb6c974223ed617c21b675ca1
+    SigninComponent,
   ],
   imports: [
     BrowserModule,

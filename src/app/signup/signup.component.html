@@ -3,43 +3,43 @@
   <h2 class="sub-header mt-4">Sign up</h2>
 
   <mat-card class="mt-4">
-    <form [formGroup]="service.form" (ngSubmit)="signUp()">
+    <form [formGroup]="service.signUpForm" (ngSubmit)="signUp()">
       <div class="form-container">
 
         <input type="hidden" formControlName="$key">
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <input matInput formControlName="fullName" placeholder="Full Name">
           <mat-error>This field is required</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <input matInput formControlName="address" placeholder="Address">
           <mat-error>This field is required</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <input matInput formControlName="nic" placeholder="NIC">
           <mat-error>This field is required</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <input matInput type="email" formControlName="email" placeholder="Email Address">
           <mat-error>Invalid email address</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <input matInput type="tel" formControlName="telephone" placeholder="Telephone">
-          <mat-error *ngIf="service.form.controls['telephone'].errors?.required">This field is required</mat-error>
-          <mat-error *ngIf="service.form.controls['telephone'].errors?.minlength">Minimum 10 characters needed</mat-error>
+          <mat-error *ngIf="service.signUpForm.controls['telephone'].errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="service.signUpForm.controls['telephone'].errors?.minlength">Minimum 10 characters needed</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <input matInput type="password" formControlName="password" placeholder="Password">
           <mat-error>This field is required</mat-error>
         </mat-form-field>
 
-        <button class="mt-2" mat-flat-button color="primary" [disabled]="service.form.invalid">Sign up</button>
+        <button class="mt-2" mat-flat-button color="primary" [disabled]="service.signUpForm.invalid">Sign up</button>
 
       </div>
     </form>
