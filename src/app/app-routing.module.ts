@@ -16,6 +16,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
+import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'updateItem/:id' , component:UpdateItemComponent},
 
   { path: 'signup', component:SignupComponent},
+  { path: 'signin', component:SigninComponent},
 ];
 
 @NgModule({

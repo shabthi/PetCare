@@ -8,7 +8,7 @@ export class UserService {
 
   constructor() { }
 
-  form: FormGroup = new FormGroup({
+  signUpForm: FormGroup = new FormGroup({
     $key: new FormControl(null),
     fullName: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
@@ -18,8 +18,8 @@ export class UserService {
     password: new FormControl('', Validators.required), 
   });
 
-  initializeFormGroup() {
-    this.form.setValue({
+  initializeSignUpFormGroup() {
+    this.signUpForm.setValue({
       $key: null,
       fullName: '',
       address: '',
@@ -28,5 +28,15 @@ export class UserService {
       telephone: '',
       password: ''
     });
+  }
+
+  signInForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required), 
+  });
+
+  // Save token in local storage
+  setToken(token: string) {
+    localStorage.setItem('token', token);
   }
 }
