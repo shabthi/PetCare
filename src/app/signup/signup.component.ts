@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   constructor(
-    private service: UserService, 
+    private userService: UserService, 
     private http: HttpClient,
     private router: Router) { }
 
@@ -24,15 +24,15 @@ export class SignupComponent implements OnInit {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json');
 
-    this.http.post(environment.serverUrl + '/user/signup', JSON.stringify(this.service.signUpForm.value), {
+    this.http.post(environment.serverUrl + '/user/signup', JSON.stringify(this.userService.signUpForm.value), {
       headers: headers,
       observe: 'response'
     })
       .subscribe(res => {
         if(res.status == 201) {
           this.router.navigate(['/signin']);
-          this.service.signUpForm.reset();
-          this.service.initializeSignUpFormGroup();
+          this.userService.signUpForm.reset();
+          this.userService.initializeSignUpFormGroup();
         }
       });
   }

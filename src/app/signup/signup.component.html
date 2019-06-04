@@ -3,7 +3,7 @@
   <h2 class="sub-header mt-4">Sign up</h2>
 
   <mat-card class="mt-4">
-    <form [formGroup]="service.signUpForm" (ngSubmit)="signUp()">
+    <form [formGroup]="userService.signUpForm" (ngSubmit)="signUp()">
       <div class="form-container">
 
         <input type="hidden" formControlName="$key">
@@ -30,8 +30,8 @@
 
         <mat-form-field appearance="outline">
           <input matInput type="tel" formControlName="telephone" placeholder="Telephone">
-          <mat-error *ngIf="service.signUpForm.controls['telephone'].errors?.required">This field is required</mat-error>
-          <mat-error *ngIf="service.signUpForm.controls['telephone'].errors?.minlength">Minimum 10 characters needed</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['telephone'].errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['telephone'].errors?.minlength">Minimum 10 characters needed</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -39,7 +39,7 @@
           <mat-error>This field is required</mat-error>
         </mat-form-field>
 
-        <button class="mt-2" mat-flat-button color="primary" [disabled]="service.signUpForm.invalid">Sign up</button>
+        <button class="mt-2" mat-flat-button color="primary" [disabled]="userService.signUpForm.invalid">Sign up</button>
 
       </div>
     </form>
