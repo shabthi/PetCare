@@ -33,6 +33,7 @@ import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
 import { RegistrationComponent } from './donation-handling/registration/registration.component';
 import { MainpageComponent } from './donation-handling/mainpage/mainpage.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MainpageComponent } from './donation-handling/mainpage/mainpage.compone
     PetsByDayComponent,
     RangeReportComponent,
     RegistrationComponent,
-    MainpageComponent
+    MainpageComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
