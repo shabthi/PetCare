@@ -13,6 +13,8 @@ import { DailyReportComponent } from './admin/reports/daily-report/daily-report.
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
 import { RegistrationComponent } from './donation-handling/registration/registration.component';
 import { MainpageComponent } from './donation-handling/mainpage/mainpage.component';
+import { AddItemComponent } from './inventory/add-item/add-item.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,10 +26,15 @@ const routes: Routes = [
   { path: 'admin/login', component: LoginComponent },
   { path: 'admin/logout', component: LogoutComponent },
   { path: 'admin/reports', component:ReportComponent},
+  { path: 'admin/dashboard', component:DashboardComponent},
   { path: 'admin/reports/daily/:date', component:DailyReportComponent},
   { path: 'admin/reports/range/:start/:end', component:RangeReportComponent},
+
   { path: 'donation-handling/registration' , component:RegistrationComponent},
   { path: 'donation-handling/mainpage' , component:MainpageComponent},
+
+  { path: 'addItem', component:AddItemComponent},
+
 
 
 ];

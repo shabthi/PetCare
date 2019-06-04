@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FileSelectDirective,FileDropDirective  } from 'ng2-file-upload';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -31,12 +31,17 @@ import { RangeReportComponent } from './admin/reports/range-report/range-report.
 
 import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
+
 import { RegistrationComponent } from './donation-handling/registration/registration.component';
 import { MainpageComponent } from './donation-handling/mainpage/mainpage.component';
 import { PaymentComponent } from './payment/payment.component';
 
+
+
 @NgModule({
   declarations: [
+    FileSelectDirective,
+    FileDropDirective ,
     AppComponent,
     HeaderComponent,
     NavigationComponent,
@@ -55,10 +60,14 @@ import { PaymentComponent } from './payment/payment.component';
     ChartsComponent,
     RequestsByDayComponent,
     PetsByDayComponent,
+
     RangeReportComponent,
     RegistrationComponent,
     MainpageComponent,
-    PaymentComponent
+    PaymentComponent,
+
+    RangeReportComponent
+
   ],
   imports: [
     BrowserModule,

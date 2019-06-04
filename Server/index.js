@@ -10,6 +10,10 @@ var express = require('express');
 var app = express();
 var appRoutes = require('./routes/appRoute');
 var userRoutes = require('./routes/user-routes');
+var adminRoutes = require('./routes/admin-routes');
+var statsRoutes = require('./routes/stats-routes');
+var itemRoutes = require('./routes/item-routes');
+
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
@@ -28,14 +32,15 @@ app.use('/user', userRoutes);
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //res.header("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,PATCH,OPTIONS");
     next();
 });
 
-//JSON application
-//const bodyParser = require("body-parser");
-app.use(bodyParser.json());
+app.use('/admin', adminRoutes);
+app.use('/stats', statsRoutes);
+app.use('/items', itemRoutes);
 
-//app.use('/', appRoutes);
+app.use('/', appRoutes);
 
 
 http.createServer(app).listen(port);

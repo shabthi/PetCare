@@ -25,6 +25,10 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
+  isLogged(){
+    return localStorage.getItem('user') != null;
+  }
+
   getName(){
     return JSON.parse(localStorage.getItem('user')).name;
   }

@@ -20,7 +20,7 @@ export class NavigationComponent implements OnInit {
   }
 
   getUserType():String{
-    return this.authService.getType();
+    if(this.authService.isLogged()) return this.authService.getType();
   }
 
 }
