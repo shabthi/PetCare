@@ -18,6 +18,8 @@ import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 import { SigninComponent } from './signin/signin.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },

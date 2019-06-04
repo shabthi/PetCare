@@ -21,7 +21,7 @@ import { ReportComponent } from './admin/report/report.component';
 
 //Angular material modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatDialogModule } from '@angular/material';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
@@ -41,6 +41,9 @@ import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 import { SigninComponent } from './signin/signin.component';
+
+// Auth guard
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -79,12 +82,13 @@ import { SigninComponent } from './signin/signin.component';
     ReactiveFormsModule,
     CountUpModule,
     //Angular material modules
-    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule
   ],
   providers: [
     PetService,
     InventoryService,
-    UserService
+    UserService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

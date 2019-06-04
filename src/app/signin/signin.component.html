@@ -8,12 +8,13 @@
 
         <mat-form-field appearance="outline">
           <input matInput type="email" formControlName="email" placeholder="Email Address">
-          <mat-error>Invalid email address</mat-error>
+          <mat-error *ngIf="service.signInForm.controls['email'].errors?.required">Please enter your email address</mat-error>
+          <mat-error *ngIf="service.signInForm.controls['email'].errors?.email">Invalid email address</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <input matInput type="password" formControlName="password" placeholder="Password">
-          <mat-error>This field is required</mat-error>
+          <mat-error>Please enter your password</mat-error>
         </mat-form-field>
 
         <button class="mt-2" mat-flat-button color="primary">Sign in</button>
