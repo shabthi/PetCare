@@ -3,6 +3,7 @@ import { UserService } from '../shared/user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-signin',
@@ -12,15 +13,15 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
 
   constructor(
-    private service: UserService, 
-    private http: HttpClient, 
-    private router: Router) { }
+    private service: UserService,
+    private http: HttpClient,
+    private router: Router,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
   signIn() {
-    console.log(this.service.signInForm.value);
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json');
 
@@ -29,14 +30,15 @@ export class SigninComponent implements OnInit {
       observe: 'response'
     })
       .subscribe(res => {
-        console.log(res);
-        if(res.status == 200) {
+        if (res.status == 200) {
           this.service.setToken(res.body['token']);
           this.router.navigate(['/home']);
         }
       }, err => {
-
+        this._snackBar.open("Sign in failed!", "", {
+          duration: 5000,
+        });
       });
-  }
+  };
 
 }
