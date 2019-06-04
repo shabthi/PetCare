@@ -13,25 +13,28 @@ import { MatSnackBar } from '@angular/material';
 export class SigninComponent implements OnInit {
 
   constructor(
-    private service: UserService,
+    private userService: UserService,
     private http: HttpClient,
     private router: Router,
     private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    if (this.userService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   signIn() {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json');
 
-    this.http.post(environment.serverUrl + '/user/login', JSON.stringify(this.service.signInForm.value), {
+    this.http.post(environment.serverUrl + '/user/login', JSON.stringify(this.userService.signInForm.value), {
       headers: headers,
       observe: 'response'
     })
       .subscribe(res => {
         if (res.status == 200) {
-          this.service.setToken(res.body['token']);
+          this.userService.setToken(res.body['token']);
           this.router.navigate(['/home']);
         }
       }, err => {
