@@ -10,8 +10,18 @@ export class PetService {
   private headers = new HttpHeaders().set('Content-Type','application/json');
   constructor(private http:HttpClient) { }
 
-  createPet(pet:Pet){
-    return this.http.post(this.baseUri+'/create',pet,{headers:this.headers});
+  createPet(pet:any){
+    console.log("in service", pet);
+    let formData:FormData = new FormData();
+    formData.append('image', pet.image2, pet.image2.name);
+    formData.append('type', pet.type);
+    formData.append('name', pet.name);
+    formData.append('age', pet.age);
+    formData.append('description', pet.description);
+    formData.append('adopterId', pet.adopterId);
+    formData.append('ownerEmail', pet.ownerEmail);
+    let  headers = new HttpHeaders().set('Content-Type','multipart/form-data');
+    return this.http.post(this.baseUri+'/create',formData,{});
   }
   readPets(){
     return this.http.get(this.baseUri+'/read',{headers:this.headers});
