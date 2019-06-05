@@ -22,6 +22,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
 import { DonnerRegistrationComponent } from './donation/donner-registration/donner-registration.component';
+import { ExportComponent } from './admin/export/export.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'admin/logout', component: LogoutComponent },
   { path: 'admin/reports', component:ReportComponent},
   { path: 'admin/dashboard', component:DashboardComponent},
+  { path: 'admin/export', component:ExportComponent},
   { path: 'admin/reports/daily/:date', component:DailyReportComponent},
   { path: 'admin/reports/range/:start/:end', component:RangeReportComponent},
   { path: 'addItem', component:AddItemComponent},
