@@ -87,6 +87,22 @@ exports.userLogin = (req, res, next) => {
         });
 }
 
+// Get user profile
+exports.userProfile = (req, res, next) => {
+    User.findOne({ _id: req.userId },
+        (err, user) => {
+            if (!user) {
+                return res.status(404).json({
+                    message: 'Cannot get profile details'
+                });
+            } else {
+                return res.status(200).json({
+                    user: user
+                });
+            }
+        });
+}
+
 // User profile update
 exports.userUpdate = (req, res, next) => {
     const id = req.params.userId;
