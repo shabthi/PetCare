@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   signUpForm: FormGroup = new FormGroup({
     $key: new FormControl(null),
@@ -40,13 +41,18 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
+  // Save token in local storage
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
   // Delete token
   deleteToken() {
     localStorage.removeItem('token');
   }
 
   getUserPayload() {
-    var token = localStorage.getItem('token');
+    var token = this.getToken();
     if (token) {
       var userPayload = atob(token.split('.')[1]);
       return JSON.parse(userPayload);
@@ -57,7 +63,7 @@ export class UserService {
 
   isLoggedIn() {
     var userPayload = this.getUserPayload();
-    if(userPayload) {
+    if (userPayload) {
       return userPayload.exp > Date.now() / 1000;
     } else {
       return false;

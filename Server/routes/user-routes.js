@@ -11,7 +11,7 @@ router.post('/signup', userController.userSignup);
 router.post('/login', userController.userLogin);
 
 // Get profile
-router.get('/profile/:userId', checkAuth, userController.userProfile);
+router.get('/profile', checkAuth, userController.userProfile);
 
 // Update
 router.patch('/update/:userId', checkAuth, userController.userUpdate);

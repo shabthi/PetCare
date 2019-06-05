@@ -89,26 +89,17 @@ exports.userLogin = (req, res, next) => {
 
 // Get user profile
 exports.userProfile = (req, res, next) => {
-    const userId = req.params.userId;
-    User.findById(userId)
-        .select('_id fullName address nic email telephone')
-        .exec()
-        .then(doc => {
-            if (doc) {
-                res.status(200).json({
-                    user: doc
+    User.findOne({ _id: req.userId },
+        (err, user) => {
+            if (!user) {
+                return res.status(404).json({
+                    message: 'Cannot get profile details'
                 });
             } else {
-                res.status(404).json({
-                    message: 'Cannot get profile details'
-                })
+                return res.status(200).json({
+                    user: user
+                });
             }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            })
         });
 }
 
