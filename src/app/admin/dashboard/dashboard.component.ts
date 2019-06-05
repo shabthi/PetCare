@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { ReportService } from '../report/report.service';
-import { totalmem } from 'os';
+// import { totalmem } from 'os';
 
 @Component({
   selector: 'app-dashboard',

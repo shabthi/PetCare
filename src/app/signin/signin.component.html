@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h2 class="sub-header mt-4">Sign in</h2>
+
+  <mat-card class="mt-4">
+    <form [formGroup]="userService.signInForm" (ngSubmit)="signIn()">
+      <div class="form-container">
+
+        <mat-form-field appearance="outline">
+          <input matInput type="email" formControlName="email" placeholder="Email Address">
+          <mat-error *ngIf="userService.signInForm.controls['email'].errors?.required">Please enter your email address</mat-error>
+          <mat-error *ngIf="userService.signInForm.controls['email'].errors?.email">Invalid email address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <input matInput type="password" formControlName="password" placeholder="Password">
+          <mat-error>Please enter your password</mat-error>
+        </mat-form-field>
+
+        <button class="mt-2" mat-flat-button color="primary">Sign in</button>
+
+      </div>
+    </form>
+  </mat-card>
+
+</div>

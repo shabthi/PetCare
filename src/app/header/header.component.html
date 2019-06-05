@@ -39,6 +39,11 @@
       <button mat-button [matMenuTriggerFor]="shelters">Shelters</button>
       <button mat-button [matMenuTriggerFor]="help">How to Help</button>
       <button mat-button>Contact Us</button>
+      <button mat-icon-button [matMenuTriggerFor]="options" *ngIf="isLoggedIn()">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <button class="ml-4" mat-flat-button color="primary" routerLink="/signup" *ngIf="!isLoggedIn()">Sign up</button>
+      <button class="ml-2" mat-stroked-button routerLink="/signin" *ngIf="!isLoggedIn()">Sign in</button>
 
 
       <mat-menu #help="matMenu">
@@ -49,6 +54,11 @@
       <mat-menu #shelters="matMenu">
         <button mat-menu-item>Dehiwela</button>
         <button mat-menu-item>Kahatuduwa</button>
+      </mat-menu>
+
+      <mat-menu #options="matMenu">
+        <a routerLink="/myProfile"><button mat-menu-item>My Profile</button></a>
+        <button mat-menu-item (click)="logout()">Log out</button>
       </mat-menu>
     </div>
 
