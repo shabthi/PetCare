@@ -2,7 +2,14 @@ var db = require('../db').getDb();
 
 module.exports = class Stats {
 
+    static newUser(){
+        var db = require('../db').getDb();
+        let date = new Date().toISOString().split("T")[0];
+        db.collection('report_data').update({date:date}, {$inc: {new_users:1}}, { upsert: true, multi: true });
+    }
+
     static adoptionsByDay(start, end) {
+
         var db = require('../db').getDb();
         return new Promise(function (resolve, reject) {
             db.collection('report_data').find(

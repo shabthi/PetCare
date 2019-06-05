@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
+const Stats = require('../models/stats');
 
 // User signup
 exports.userSignup = (req, res, next) => {
@@ -31,6 +32,7 @@ exports.userSignup = (req, res, next) => {
                         user.save()
                             .then(result => {
                                 console.log(result);
+                                Stats.newUser();
                                 res.status(201).json({
                                     message: 'User created'
                                 })

@@ -9,8 +9,7 @@ router.post('/create', (req,  res,next) => {
         age: req.body.age,
         description: req.body.description,
         status: req.body.status,
-        adopterId: req.body.adopterId
-        
+        adopterId: req.body.adopterId 
     });
     newAnimal.save((err,animal)=>{
         if(err)
