@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Update Profile</h2>
+<mat-dialog-content class="mat-typography">
+
+  <form [formGroup]="userService.updateForm">
+    <div class="form-container">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" placeholder="Address">
+        <mat-error>This field cannot be empty</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Telephone</mat-label>
+        <input floatLabel="true" matInput type="tel" formControlName="telephone" placeholder="Telephone">
+        <mat-error>This field cannot be empty</mat-error>
+      </mat-form-field>
+
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="mr-2" mat-stroked-button color="accent" mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="data" (click)="updateProfile()">Update</button>
+</mat-dialog-actions>
