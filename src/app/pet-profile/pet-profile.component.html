@@ -2,19 +2,38 @@
 <section id="petProfile">
   <div class="container">
     <div ><button  type="button "class="btn btn-primary btn block" (click)="newPet($event)" routerLink="/createUpdate">ADD NEW PET</button></div>
-  <br><div class="card-deck">
-    <div class="card" *ngFor="let pet of pets">
-      <img src="..." class="card-img-top" alt="No Image available">
-      <div class="card-body">
-        <h5 class="card-title">{{pet._id}}</h5>
-        <p class="card-text">{{pet.description}}<br>{{pet.type}}</p>
+  <br>
+  <div class="card-deck" >
+      
+          <div class="card" style="min-width: 18rem;"  *ngFor="let pet of pets">
+            <img src="{{pet.image}}" class="card-img-top" alt="No Image available">
+              <div class="card-body">
+                <h5 class="card-title">{{pet.name}}</h5>
+                <ul class="card-text">
+                    <li>{{pet.type}}</li>
+                    <li>{{pet.age}}</li>
+                    <li>{{pet.status}}</li>
+
+                </ul>
+                <p class="card-text">
+                  {{pet.description}}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-link">UPDATE</button>
+              </div>
+              <div class="card-footer">
+                  <button type="button" class="btn btn-link">ADOPT</button>
+              </div>
+              
       </div>
-      <div class="card-footer">
-        <button type="button" class="btn btn-link" (click)="doUpdate(pet)">UPDATE</button>
-      </div>
-    </div>
-    
+        
+          
+      
+          
+   
     
   </div>
+  <br>
 </div>
 </section>

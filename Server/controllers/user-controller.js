@@ -108,12 +108,11 @@ exports.userProfile = (req, res, next) => {
 
 // User profile update
 exports.userUpdate = (req, res, next) => {
-    const id = req.params.userId;
     const updateOps = {};
     for (const ops of req.body) {
         updateOps[ops.propName] = ops.value;
     }
-    User.update({ _id: id }, { $set: updateOps }).exec()
+    User.update({ _id: req.userId }, { $set: updateOps }).exec()
         .then(result => {
             console.log(result);
             if (result.ok == 1) {

@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FileSelectDirective } from 'ng2-file-upload';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/user.service';
 import { ExportService } from './admin/export/export.service';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -44,6 +44,7 @@ import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DialogProfileUpdateComponent } from './dialog-profile-update/dialog-profile-update.component';
 
 // Auth guard
 import { AuthGuard } from './auth/auth.guard';
@@ -55,6 +56,7 @@ import { ActiveUsersComponent } from './admin/reports/charts/active-users/active
 
 @NgModule({
   declarations: [
+    FileSelectDirective,
     AppComponent,
     HeaderComponent,
     NavigationComponent,
@@ -84,6 +86,7 @@ import { ActiveUsersComponent } from './admin/reports/charts/active-users/active
     DonationMainpageComponent,
     DonnerRegistrationComponent,
     UserProfileComponent,
+    DialogProfileUpdateComponent,
     ExportComponent,
     ExportUsersComponent,
     ActiveUsersComponent,
@@ -106,6 +109,7 @@ import { ActiveUsersComponent } from './admin/reports/charts/active-users/active
     AuthGuard,
     ExportService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogProfileUpdateComponent],
 })
 export class AppModule { }

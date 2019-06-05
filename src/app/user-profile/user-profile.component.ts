@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { DialogProfileUpdateComponent } from '../dialog-profile-update/dialog-profile-update.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,9 +13,11 @@ import { environment } from 'src/environments/environment';
 })
 export class UserProfileComponent implements OnInit {
 
-  user = {"fullName": "", "address": "", "email": "", "nic": "", "telephone": ""};
-
-  constructor(private router: Router, private userService: UserService, private http: HttpClient) { }
+  constructor(
+    private router: Router, 
+    private userService: UserService, 
+    private http: HttpClient,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getUserProfile();
@@ -29,10 +33,19 @@ export class UserProfileComponent implements OnInit {
       headers: headers
     }).subscribe(
       res => {
-        this.user = res['user'];
+        this.userService.user = res['user'];
+        // Update dialog data 
+        this.userService.updateForm.patchValue({
+          address: this.userService.user.address,
+          telephone: this.userService.user.telephone
+        });
       },
       err => {
         console.log(err);
       });
+  }
+
+  openUpdateDialog() {
+    const dialogRef = this.dialog.open(DialogProfileUpdateComponent, { width: '450px'});
   }
 }

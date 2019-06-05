@@ -14,6 +14,6 @@ router.post('/login', userController.userLogin);
 router.get('/profile', checkAuth, userController.userProfile);
 
 // Update
-router.patch('/update/:userId', checkAuth, userController.userUpdate);
+router.patch('/update', checkAuth, userController.userUpdate);
 
 module.exports = router;

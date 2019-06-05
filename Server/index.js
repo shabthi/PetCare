@@ -20,11 +20,16 @@ var cors = require('cors');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/PetCare', { useNewUrlParser: true });
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
+var nodemailer=require('nodemailer');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-//app.use('/',appRoutes);
+app.use('/',appRoutes);
 app.use('/user', userRoutes);
 
 
@@ -44,6 +49,7 @@ app.use('/export', exportRoutes);
 app.use('/items', itemRoutes);
 
 app.use('/', appRoutes);
+
 
 
 http.createServer(app).listen(port);

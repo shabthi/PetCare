@@ -5,7 +5,10 @@ var animalSchema = mongoose.Schema({
     age:{type: Number},
     description:{type: String},
     status:{type: String},
-    adopterId:{type:String}
+    name:{type: String},
+    ownerEmail:{type: String},
+    adopterId:{type:String},
+    image:{type:String}
     
 });
 
