@@ -13,6 +13,15 @@ import { DailyReportComponent } from './admin/reports/daily-report/daily-report.
 import { RangeReportComponent } from './admin/reports/range-report/range-report.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { SignupComponent } from './signup/signup.component';
+import { ItemsComponent } from './inventory/items/items.component';
+import { UpdateItemComponent } from './inventory/update-item/update-item.component';
+import { SigninComponent } from './signin/signin.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+
+import { AuthGuard } from './auth/auth.guard';
+import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
+import { DonnerRegistrationComponent } from './donation/donner-registration/donner-registration.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,8 +37,14 @@ const routes: Routes = [
   { path: 'admin/reports/daily/:date', component:DailyReportComponent},
   { path: 'admin/reports/range/:start/:end', component:RangeReportComponent},
   { path: 'addItem', component:AddItemComponent},
+  { path: 'items' , component:ItemsComponent},
+  { path: 'updateItem/:id' , component:UpdateItemComponent},
 
-
+  { path: 'signup', component:SignupComponent},
+  { path: 'signin', component:SigninComponent},
+  { path: 'donationmainpage', component:DonationMainpageComponent},
+  { path: 'donnerregistration', component:DonnerRegistrationComponent},
+  { path: 'myProfile', component:UserProfileComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({

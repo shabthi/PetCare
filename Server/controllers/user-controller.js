@@ -21,7 +21,11 @@ exports.userSignup = (req, res, next) => {
                     } else {
                         const user = new User({
                             _id: new mongoose.Types.ObjectId,
+                            fullName: req.body.fullName,
+                            address: req.body.address,
+                            nic: req.body.nic,
                             email: req.body.email,
+                            telephone: req.body.telephone,
                             password: hash
                         });
                         user.save()
@@ -80,6 +84,22 @@ exports.userLogin = (req, res, next) => {
             res.status(500).json({
                 error: err
             });
+        });
+}
+
+// Get user profile
+exports.userProfile = (req, res, next) => {
+    User.findOne({ _id: req.userId },
+        (err, user) => {
+            if (!user) {
+                return res.status(404).json({
+                    message: 'Cannot get profile details'
+                });
+            } else {
+                return res.status(200).json({
+                    user: user
+                });
+            }
         });
 }
 

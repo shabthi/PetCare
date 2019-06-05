@@ -1,0 +1,28 @@
+<div id="content" class="container-fluid">
+    <button class="btn btn-primary" routerLink="/addItem">Add New Item</button>
+    <br><br>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>code</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Reorder Level</th>
+            <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr *ngFor="let item of items">
+              <td>{{ item.name }}</td>
+              <td>{{ item.code }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.reorderLevel }}</td>
+              <td><a [routerLink]="['/updateItem', item._id]" class="btn btn-primary">Update</a></td>
+              <td><button (click)="deleteItem(item._id)" class="btn btn-danger">Delete</button></td>
+          </tr>
+      </tbody>
+    </table>
+</div>
