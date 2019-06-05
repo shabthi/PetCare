@@ -17,6 +17,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 import { SigninComponent } from './signin/signin.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -39,6 +40,7 @@ const routes: Routes = [
 
   { path: 'signup', component:SignupComponent},
   { path: 'signin', component:SigninComponent},
+  { path: 'myProfile', component:UserProfileComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
