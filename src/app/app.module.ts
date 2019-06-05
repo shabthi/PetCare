@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/user.service';
 
@@ -41,6 +41,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 import { SigninComponent } from './signin/signin.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 // Auth guard
 import { AuthGuard } from './auth/auth.guard';
@@ -76,6 +77,7 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
     SigninComponent,
     DonationMainpageComponent,
     DonnerRegistrationComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,7 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
     PetService,
     InventoryService,
     UserService,
-    AuthGuard
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

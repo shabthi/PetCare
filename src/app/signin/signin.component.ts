@@ -34,6 +34,7 @@ export class SigninComponent implements OnInit {
     })
       .subscribe(res => {
         if (res.status == 200) {
+          this.userService.signInForm.reset();
           this.userService.setToken(res.body['token']);
           this.router.navigate(['/home']);
         }
