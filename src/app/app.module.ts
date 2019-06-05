@@ -37,6 +37,7 @@ import { PetCreateComponent } from './pet-create/pet-create.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { InventoryService } from './inventory/inventory.service';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UsersByDayComponent } from './admin/reports/charts/user-by-day/user-by-day.component';
 import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
@@ -71,6 +72,7 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
     RangeReportComponent,
     AddItemComponent,
     DashboardComponent,
+    UsersByDayComponent,
     SignupComponent,
     ItemsComponent,
     UpdateItemComponent,
