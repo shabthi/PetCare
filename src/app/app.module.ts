@@ -5,6 +5,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/user.service';
+import { ExportService } from './admin/export/export.service';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -21,7 +22,7 @@ import { ReportComponent } from './admin/report/report.component';
 
 //Angular material modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatDialogModule } from '@angular/material';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatPaginatorModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatDividerModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
@@ -49,6 +50,9 @@ import { DialogProfileUpdateComponent } from './dialog-profile-update/dialog-pro
 import { AuthGuard } from './auth/auth.guard';
 import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
 import { DonnerRegistrationComponent } from './donation/donner-registration/donner-registration.component';
+import { ExportComponent } from './admin/export/export.component';
+import { ExportUsersComponent } from './admin/export/export-users/export-users.component';
+import { ActiveUsersComponent } from './admin/reports/charts/active-users/active-users.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +87,9 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
     DonnerRegistrationComponent,
     UserProfileComponent,
     DialogProfileUpdateComponent,
+    ExportComponent,
+    ExportUsersComponent,
+    ActiveUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,13 +100,14 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
     ReactiveFormsModule,
     CountUpModule,
     //Angular material modules
-    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatDialogModule
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatDividerModule
   ],
   providers: [
     PetService,
     InventoryService,
     UserService,
     AuthGuard,
+    ExportService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogProfileUpdateComponent],

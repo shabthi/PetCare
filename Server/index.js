@@ -12,6 +12,7 @@ var appRoutes = require('./routes/appRoute');
 var userRoutes = require('./routes/user-routes');
 var adminRoutes = require('./routes/admin-routes');
 var statsRoutes = require('./routes/stats-routes');
+var exportRoutes = require('./routes/export-routes');
 var itemRoutes = require('./routes/item-routes');
 
 var bodyParser = require('body-parser');
@@ -43,6 +44,8 @@ app.use(function (req, res, next) {
 
 app.use('/admin', adminRoutes);
 app.use('/stats', statsRoutes);
+app.use('/export', exportRoutes);
+
 app.use('/items', itemRoutes);
 
 app.use('/', appRoutes);

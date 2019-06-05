@@ -69,6 +69,54 @@
                             </div>
                         </div>
                     </div>
+
+                    <mat-divider [vertical]="true"></mat-divider>
+
+                    <div class="info_box" fxLayout="column">
+                        <div class="info_box title">New Users</div>
+                        <div class="info_box val">
+                            {{report.stats.users}}
+                            <span *ngIf="report.changes.users > 0" style="color:green">
+                                (+{{report.changes.users}})
+                                <mat-icon>trending_up</mat-icon>
+                            </span>
+                            <span *ngIf="report.changes.users < 0" style="color:red">
+                                ({{report.changes.users}})
+                                <mat-icon>trending_down</mat-icon>
+                            </span>
+
+                            <span *ngIf="report.changes.users == 0" style="color:grey">(-)
+                            </span>
+
+                            <div>
+                                ({{report.stats.users/report.days | number : '1.2-2'}} per day)
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="info_box" fxLayout="column">
+                        <div class="info_box title">Active Users</div>
+                        <div class="info_box val">
+                            {{report.stats.active}}
+                            <span *ngIf="report.changes.active > 0" style="color:green">
+                                (+{{report.changes.active}})
+                                <mat-icon>trending_up</mat-icon>
+                            </span>
+                            <span *ngIf="report.changes.active < 0" style="color:red">
+                                ({{report.changes.active}})
+                                <mat-icon>trending_down</mat-icon>
+                            </span>
+
+                            <span *ngIf="report.changes.active == 0" style="color:grey">(-)
+                            </span>
+
+                            <div>
+                                ({{report.stats.active/report.days | number : '1.2-2'}} per day)
+                            </div>
+
+                        </div>
+                    </div>
     
                 </mat-card>
             </div>
