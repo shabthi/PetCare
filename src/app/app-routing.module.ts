@@ -19,6 +19,7 @@ import { UpdateItemComponent } from './inventory/update-item/update-item.compone
 import { SigninComponent } from './signin/signin.component';
 
 import { AuthGuard } from './auth/auth.guard';
+import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const routes: Routes = [
 
   { path: 'signup', component:SignupComponent},
   { path: 'signin', component:SigninComponent},
+  { path: 'donationmainpage', component:DonationMainpageComponent},
 ];
 
 @NgModule({
