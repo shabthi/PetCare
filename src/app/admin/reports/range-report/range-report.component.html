@@ -85,20 +85,54 @@
 
 
 
-        <mat-card fxLayout="row wrap" fxLayoutGap="20px">
+        <mat-card fxLayout="column wrap" fxLayoutGap="20px">
 
-            <app-adoptions-by-day [start]="report.start" [end]="report.end" width="450" height="300">
-            </app-adoptions-by-day>
-
-            <app-requests-by-day [start]="report.start" [end]="report.end" width="450" height="300">
-            </app-requests-by-day>
-
-            <app-pets-by-day [start]="report.start" [end]="report.end" width="450" height="300">
-            </app-pets-by-day>
-
-
-
-        </mat-card>
+                <h3 style="padding-left:30px;">Services</h3>
+    
+                <div fxLayout="row wrap" fxLayoutGap="20px">
+                    <app-adoptions-by-day [start]="report.start" [end]="report.end" width="450" height="300">
+                    </app-adoptions-by-day>
+    
+                    <app-requests-by-day [start]="report.start" [end]="report.end" width="450" height="300">
+                    </app-requests-by-day>
+    
+                    <app-pets-by-day [start]="report.start" [end]="report.end" width="450" height="300">
+                    </app-pets-by-day>
+    
+                </div>
+    
+    
+    
+            </mat-card>
+    
+    
+            <mat-card fxLayout="column wrap" fxLayoutGap="20px">
+    
+                <h3 style="padding-left:30px;">Users</h3>
+    
+                <div fxLayout="row wrap" fxLayoutGap="20px">
+                    <app-users-by-day [start]="report.start" [end]="report.end" width="450" height="300">
+                    </app-users-by-day>
+    
+    
+                </div>
+    
+    
+            </mat-card>
+    
+            <mat-card fxLayout="column wrap" fxLayoutGap="20px">
+    
+                <h3 style="padding-left:30px;">Donations</h3>
+    
+                <div fxLayout="row wrap" fxLayoutGap="20px">
+                    <app-users-by-day [start]="report.start" [end]="report.end" width="450" height="300">
+                    </app-users-by-day>
+    
+    
+                </div>
+    
+    
+            </mat-card>
     </div>
 </div>
 

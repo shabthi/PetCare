@@ -34,6 +34,7 @@ import {PetService}from './shared/pet.service';
 import { PetCreateComponent } from './pet-create/pet-create.component';
 import { AddItemComponent } from './inventory/add-item/add-item.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UsersByDayComponent } from './admin/reports/charts/user-by-day/user-by-day.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     PetsByDayComponent,
     RangeReportComponent,
     AddItemComponent,
-    DashboardComponent
+    DashboardComponent,
+    UsersByDayComponent
   ],
   imports: [
     BrowserModule,

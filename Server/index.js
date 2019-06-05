@@ -5,7 +5,7 @@ require('./db').connectToServer(function(err, client){
 
 
 var http = require('http');
-var port = process.env.PORT || 8080;
+var port =  8080;
 var express = require('express');
 var app = express();
 var appRoutes = require('./routes/appRoute');
