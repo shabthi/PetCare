@@ -45,6 +45,7 @@ import { SigninComponent } from './signin/signin.component';
 // Auth guard
 import { AuthGuard } from './auth/auth.guard';
 import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
+import { DonnerRegistrationComponent } from './donation/donner-registration/donner-registration.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { DonationMainpageComponent } from './donation/donation-mainpage/donation
     UpdateItemComponent,
     SigninComponent,
     DonationMainpageComponent,
+    DonnerRegistrationComponent,
   ],
   imports: [
     BrowserModule,

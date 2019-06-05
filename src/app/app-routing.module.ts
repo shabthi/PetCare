@@ -20,6 +20,7 @@ import { SigninComponent } from './signin/signin.component';
 
 import { AuthGuard } from './auth/auth.guard';
 import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
+import { DonnerRegistrationComponent } from './donation/donner-registration/donner-registration.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'signup', component:SignupComponent},
   { path: 'signin', component:SigninComponent},
   { path: 'donationmainpage', component:DonationMainpageComponent},
+  { path: 'donnerregistration', component:DonnerRegistrationComponent},
 ];
 
 @NgModule({
