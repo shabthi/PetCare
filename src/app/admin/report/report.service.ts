@@ -79,4 +79,25 @@ export class ReportService {
         });
     });
   }
+
+  activeByDay(start: string, end: string) {
+    let self = this;
+    return new Promise(function (resolve, reject) {
+      let url = "http://localhost:8080/stats/active-by-day"
+      self.http.post(url,
+        {
+          start: start,
+          end: end
+        }).toPromise()
+        .then(function (results) {
+          for (var key in results) {
+            results[key] = results[key].length;
+          }
+          resolve(results);
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+  }
 }

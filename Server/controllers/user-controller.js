@@ -71,6 +71,7 @@ exports.userLogin = (req, res, next) => {
                         {
                             expiresIn: "1h"
                         });
+                    Stats.activeUser(user[0]._id);
                     return res.status(200).json({
                         message: 'Auth successful',
                         token: token

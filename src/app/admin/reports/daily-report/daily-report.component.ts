@@ -20,13 +20,17 @@ export class DailyReportComponent implements OnInit {
     stats: {
       adoptions: 0,
       requests: 0,
-      pets:0
+      pets: 0,
+      users: 0,
+      active: 0
     },
 
     changes: {
       adoptions: 0,
       requests: 0,
-      pets:0
+      pets: 0,
+      users: 0,
+      active: 0
     }
 
   }
@@ -39,7 +43,7 @@ export class DailyReportComponent implements OnInit {
 
 
   async ngOnInit() {
-    
+
     this.report.date = this.route.snapshot.params['date'];
     this.report.start = new Date(new Date(this.report.date).setDate(new Date(this.report.date).getDate() - 4)).toISOString().split("T")[0];
     this.report.prev = new Date(new Date(this.report.date).setDate(new Date(this.report.date).getDate() - 1)).toISOString().split("T")[0];
@@ -67,7 +71,7 @@ export class DailyReportComponent implements OnInit {
         self.report.stats.requests = 0;
       });
 
-      let p3 = this.reportService.petsByDay(this.report.date, this.report.date)
+    let p3 = this.reportService.petsByDay(this.report.date, this.report.date)
       .then(function (results) {
         if (results[self.report.date] == undefined) results[self.report.date] = 0;
         self.report.stats.pets = results[self.report.date];
@@ -77,10 +81,30 @@ export class DailyReportComponent implements OnInit {
         self.report.stats.pets = 0;
       });
 
-      await p1; await p2; await p3;
-      let prev_date = moment(this.report.date).subtract(1, 'days').format("YYYY-MM-DD");
-      
-      this.reportService.adoptionsByDay(prev_date, prev_date)
+    let p4 = this.reportService.usersByDay(this.report.date, this.report.date)
+      .then(function (results) {
+        if (results[self.report.date] == undefined) results[self.report.date] = 0;
+        self.report.stats.users = results[self.report.date];
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.stats.users = 0;
+      });
+
+      let p5 = this.reportService.activeByDay(this.report.date, this.report.date)
+      .then(function (results) {
+        if (results[self.report.date] == undefined) results[self.report.date] = 0;
+        self.report.stats.active = results[self.report.date];
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.stats.active = 0;
+      });
+
+    await p1; await p2; await p3; await p4; await p5;
+    let prev_date = moment(this.report.date).subtract(1, 'days').format("YYYY-MM-DD");
+
+    this.reportService.adoptionsByDay(prev_date, prev_date)
       .then(function (results) {
         let prev_value = results[prev_date] || 0;
         self.report.changes.adoptions = self.report.stats.adoptions - prev_value;
@@ -90,7 +114,7 @@ export class DailyReportComponent implements OnInit {
         self.report.changes.adoptions = 0;
       });
 
-      this.reportService.requestsByDay(prev_date, prev_date)
+    this.reportService.requestsByDay(prev_date, prev_date)
       .then(function (results) {
         let prev_value = results[prev_date] || 0;
         self.report.changes.requests = self.report.stats.requests - prev_value;
@@ -100,7 +124,7 @@ export class DailyReportComponent implements OnInit {
         self.report.changes.requests = 0;
       });
 
-      this.reportService.petsByDay(prev_date, prev_date)
+    this.reportService.petsByDay(prev_date, prev_date)
       .then(function (results) {
         let prev_value = results[prev_date] || 0;
         self.report.changes.pets = self.report.stats.pets - prev_value;
@@ -108,6 +132,28 @@ export class DailyReportComponent implements OnInit {
       .catch(function (error) {
         console.log(error);
         self.report.changes.pets = 0;
+      });
+
+    this.reportService.usersByDay(prev_date, prev_date)
+      .then(function (results) {
+        let prev_value = results[prev_date] || 0;
+        self.report.changes.users = self.report.stats.users - prev_value;
+        console.log(self.report.changes.users);
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.changes.users = 0;
+      });
+
+      this.reportService.activeByDay(prev_date, prev_date)
+      .then(function (results) {
+        let prev_value = results[prev_date] || 0;
+        self.report.changes.active = self.report.stats.active - prev_value;
+        console.log(self.report.changes.active);
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.changes.active = 0;
       });
 
   }

@@ -24,13 +24,17 @@ export class RangeReportComponent implements OnInit {
     stats: {
       adoptions: 0,
       requests: 0,
-      pets: 0
+      pets: 0,
+      users: 0,
+      active: 0
     },
 
     changes: {
       adoptions: 0,
       requests: 0,
-      pets:0
+      pets:0,
+      users: 0,
+      active: 0
     }
 
   }
@@ -93,7 +97,31 @@ export class RangeReportComponent implements OnInit {
         self.report.stats.pets = 0;
       });
 
-      await p1; await p2; await p3;
+      let p4 = this.reportService.usersByDay(this.report.start, this.report.end)
+      .then(function (results) {
+        self.report.stats.users = 0;
+        for (var key in results) {
+          self.report.stats.users += results[key];
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.stats.users = 0;
+      });
+
+      let p5 = this.reportService.activeByDay(this.report.start, this.report.end)
+      .then(function (results) {
+        self.report.stats.active = 0;
+        for (var key in results) {
+          self.report.stats.active += results[key];
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.stats.active = 0;
+      });
+
+      await p1; await p2; await p3; await p4; await p5;
       let prev = {
         start: moment(this.report.start).subtract(this.report.days, 'days').format("YYYY-MM-DD"),
         end: moment(this.report.end).subtract(this.report.days, 'days').format("YYYY-MM-DD")
@@ -136,6 +164,32 @@ export class RangeReportComponent implements OnInit {
       .catch(function (error) {
         console.log(error);
         self.report.changes.requests = 0;
+      });
+
+      this.reportService.usersByDay(prev.start, prev.end)
+      .then(function (results) {
+        let prev_value = 0;
+        for (var key in results) {
+          prev_value += results[key];
+        }
+        self.report.changes.users = self.report.stats.users - prev_value;
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.changes.users = 0;
+      });
+
+      this.reportService.activeByDay(prev.start, prev.end)
+      .then(function (results) {
+        let prev_value = 0;
+        for (var key in results) {
+          prev_value += results[key];
+        }
+        self.report.changes.active = self.report.stats.active - prev_value;
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.changes.active = 0;
       });
   }
 

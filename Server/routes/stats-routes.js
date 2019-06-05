@@ -63,5 +63,20 @@ router.post('/users-by-day', (req, res, next) => {
         });
 });
 
+router.post('/active-by-day', (req, res, next) => {
+    var start = req.body.start;
+    var end = req.body.end;
+
+    Stats.activeByDay(start, end)
+        .then(function (result) {
+            res.status(200);
+            res.json(result);
+        })
+        .catch(function (error) {
+            res.status(500);
+            res.json(error);
+        });
+});
+
 
 module.exports = router;
