@@ -87,6 +87,31 @@ exports.userLogin = (req, res, next) => {
         });
 }
 
+// Get user profile
+exports.userProfile = (req, res, next) => {
+    const userId = req.params.userId;
+    User.findById(userId)
+        .select('_id fullName address nic email telephone')
+        .exec()
+        .then(doc => {
+            if (doc) {
+                res.status(200).json({
+                    user: doc
+                });
+            } else {
+                res.status(404).json({
+                    message: 'Cannot get profile details'
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        });
+}
+
 // User profile update
 exports.userUpdate = (req, res, next) => {
     const id = req.params.userId;
