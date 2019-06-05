@@ -4,5 +4,7 @@ export class Pet {
     public age:Number;
     public description:String;
     public status:String;
-
+    public adopterId:String;
+    public ownerEmail:String;
+    public name:String;
 }

@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FileSelectDirective } from 'ng2-file-upload';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/user.service';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -51,6 +51,7 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
 
 @NgModule({
   declarations: [
+    FileSelectDirective,
     AppComponent,
     HeaderComponent,
     NavigationComponent,
