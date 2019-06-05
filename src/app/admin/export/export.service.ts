@@ -22,4 +22,19 @@ export class ExportService {
     });
 
   }
+
+  pets(){
+    let self = this;
+    return new Promise(function (resolve, reject) {
+      let url = "http://localhost:8080/export/pets"
+      self.http.get(url).toPromise()
+        .then(function (results) {
+          resolve(results);
+        })
+        .catch(function (error) {
+          reject(error);
+        });
+    });
+
+  }
 }

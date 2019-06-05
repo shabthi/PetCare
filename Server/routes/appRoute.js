@@ -2,6 +2,7 @@ require('../index');
 var express = require('express');
 var router = express.Router();
 var Animal = require('../models/dataSchema');
+const Stats = require('../models/stats');
 
 
 var nodemailer=require('nodemailer');
@@ -45,7 +46,10 @@ router.post('/create', (req,  res,next) => {
                 newAnimal.save((err,animal)=>{
                     if(err)
                         res.status(500).json({errmsg:err});
-                    res.status(200).json({msg:animal});
+                    else{
+                      Stats.newPet();
+                      res.status(200).json({msg:animal});
+                    }
                 });  
             
         });
