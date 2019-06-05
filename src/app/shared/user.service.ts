@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
 
+  user = {"fullName": "", "address": "", "email": "", "nic": "", "telephone": ""};
+
   constructor(private http: HttpClient) { }
 
   signUpForm: FormGroup = new FormGroup({
@@ -34,6 +36,11 @@ export class UserService {
   signInForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
+  });
+
+  updateForm: FormGroup = new FormGroup({
+    address: new FormControl('', [Validators.required]),
+    telephone: new FormControl('', Validators.required),
   });
 
   // Save token in local storage
