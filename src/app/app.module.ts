@@ -41,6 +41,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 import { SigninComponent } from './signin/signin.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 // Auth guard
 import { AuthGuard } from './auth/auth.guard';
@@ -72,6 +73,7 @@ import { AuthGuard } from './auth/auth.guard';
     ItemsComponent,
     UpdateItemComponent,
     SigninComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
