@@ -51,7 +51,10 @@ export class InventoryService {
     return this
               .http
               .get(`${this.uri}/delete/${id}`);
-}
+  }
 
+  getReorderItems() {
+    return this.http.get(`${this.uri}/reorderItems`);
+  }
     
 }

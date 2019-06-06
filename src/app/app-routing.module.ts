@@ -18,6 +18,7 @@ import { ItemsComponent } from './inventory/items/items.component';
 import { UpdateItemComponent } from './inventory/update-item/update-item.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ItemsNeedComponent } from './inventory/items-need/items-need.component';
 
 import { AuthGuard } from './auth/auth.guard';
 import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'addItem', component:AddItemComponent},
   { path: 'items' , component:ItemsComponent},
   { path: 'updateItem/:id' , component:UpdateItemComponent},
+  { path: 'itemsNeed' , component:ItemsNeedComponent},
 
   { path: 'signup', component:SignupComponent},
   { path: 'signin', component:SigninComponent},
