@@ -53,6 +53,7 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
 import { ExportComponent } from './admin/export/export.component';
 import { ExportUsersComponent } from './admin/export/export-users/export-users.component';
 import { ActiveUsersComponent } from './admin/reports/charts/active-users/active-users.component';
+import { ItemsNeedComponent } from './inventory/items-need/items-need.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { ActiveUsersComponent } from './admin/reports/charts/active-users/active
     ExportComponent,
     ExportUsersComponent,
     ActiveUsersComponent,
+    ItemsNeedComponent,
   ],
   imports: [
     BrowserModule,
