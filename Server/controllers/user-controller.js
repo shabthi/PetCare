@@ -26,7 +26,8 @@ exports.userSignup = (req, res, next) => {
                             nic: req.body.nic,
                             email: req.body.email,
                             telephone: req.body.telephone,
-                            password: hash
+                            password: hash,
+                            profilePicture: ""
                         });
                         user.save()
                             .then(result => {
@@ -36,6 +37,7 @@ exports.userSignup = (req, res, next) => {
                                 })
                             })
                             .catch(err => {
+                                console.log("sjkdgasfas");
                                 res.status(500).json({
                                     error: err
                                 });
@@ -119,6 +121,31 @@ exports.userUpdate = (req, res, next) => {
             } else {
                 res.status(500).json({
                     message: 'Profile does not updated!'
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+// Update profile picture
+exports.updateProfilePicture = (req, res, next) => {
+    User.findOne({ _id: req.userId }).select('profilePicture').exec().then(doc => {
+        console.log(doc.profilePicture);
+    });
+    const newPicture = {"profilePicture": req.file.path};
+    User.update({ _id: req.userId }, { $set: newPicture }).exec()
+        .then(result => {
+            if (result.ok == 1) {
+                res.status(200).json({
+                    message: 'Profile picture updated'
+                });
+            } else {
+                res.status(500).json({
+                    message: 'Profile picture does not updated!'
                 });
             }
         })

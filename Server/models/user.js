@@ -12,7 +12,8 @@ const userSchema = mongoose.Schema({
         // match:  
     },
     telephone: { type: String, required: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    profilePicture: { type: String }
 });
 
 module.exports = mongoose.model('User', userSchema)
