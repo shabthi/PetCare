@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReportService } from '../../report/report.service';
 import * as moment from 'moment';
@@ -10,6 +10,11 @@ import * as moment from 'moment';
 })
 export class RangeReportComponent implements OnInit {
 
+  @Input() start:string;
+  @Input() end:string;
+
+  @Input() dashboard = false;
+
   report = {
 
     start: "",
@@ -20,6 +25,12 @@ export class RangeReportComponent implements OnInit {
       adoptions: 0,
       requests: 0,
       pets: 0
+    },
+
+    changes: {
+      adoptions: 0,
+      requests: 0,
+      pets:0
     }
 
   }
@@ -31,16 +42,22 @@ export class RangeReportComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+  async ngOnInit() {
 
+    if(this.start != undefined){
+      this.report.start = this.start;
+      this.report.end = this.end;
+    }
+    else{
+      this.report.start = this.route.snapshot.params['start'];
+      this.report.end = this.route.snapshot.params['end'];  
+    }
 
-    this.report.start = this.route.snapshot.params['start'];
-    this.report.end = this.route.snapshot.params['end'];
     this.report.days = moment(this.report.end, "YYYY-MM-DD").diff(moment(this.report.start, "YYYY-MM-DD"), 'days') + 1;
     console.log(this.report.days);
     let self = this;
 
-    this.reportService.adoptionsByDay(this.report.start, this.report.end)
+    let p1 = this.reportService.adoptionsByDay(this.report.start, this.report.end)
       .then(function (results) {
         self.report.stats.adoptions = 0;
         for (var key in results) {
@@ -52,7 +69,7 @@ export class RangeReportComponent implements OnInit {
         self.report.stats.adoptions = 0;
       });
 
-    this.reportService.requestsByDay(this.report.start, this.report.end)
+    let p2 = this.reportService.requestsByDay(this.report.start, this.report.end)
       .then(function (results) {
         self.report.stats.requests = 0;
         for (var key in results) {
@@ -64,7 +81,7 @@ export class RangeReportComponent implements OnInit {
         self.report.stats.requests = 0;
       });
 
-    this.reportService.petsByDay(this.report.start, this.report.end)
+    let p3 = this.reportService.petsByDay(this.report.start, this.report.end)
       .then(function (results) {
         self.report.stats.pets = 0;
         for (var key in results) {
@@ -76,6 +93,50 @@ export class RangeReportComponent implements OnInit {
         self.report.stats.pets = 0;
       });
 
+      await p1; await p2; await p3;
+      let prev = {
+        start: moment(this.report.start).subtract(this.report.days, 'days').format("YYYY-MM-DD"),
+        end: moment(this.report.end).subtract(this.report.days, 'days').format("YYYY-MM-DD")
+      }
+
+      this.reportService.adoptionsByDay(prev.start, prev.end)
+      .then(function (results) {
+        let prev_value = 0;
+        for (var key in results) {
+          prev_value += results[key];
+        }
+        self.report.changes.adoptions = self.report.stats.adoptions - prev_value;
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.changes.adoptions = 0;
+      });
+
+      this.reportService.petsByDay(prev.start, prev.end)
+      .then(function (results) {
+        let prev_value = 0;
+        for (var key in results) {
+          prev_value += results[key];
+        }
+        self.report.changes.pets = self.report.stats.pets - prev_value;
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.changes.pets = 0;
+      });
+
+      this.reportService.requestsByDay(prev.start, prev.end)
+      .then(function (results) {
+        let prev_value = 0;
+        for (var key in results) {
+          prev_value += results[key];
+        }
+        self.report.changes.requests = self.report.stats.requests - prev_value;
+      })
+      .catch(function (error) {
+        console.log(error);
+        self.report.changes.requests = 0;
+      });
   }
 
 

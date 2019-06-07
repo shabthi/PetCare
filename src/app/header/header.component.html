@@ -1,7 +1,67 @@
-<header>
-  <div class="top">
+<!--<div class="top">
     <div class="container">
       <h1><img src="assets/images/logo.jpg" alt="logo" id="logo" >Animal Welfare and Protection Association</h1>
     </div>
+  </div>-->
+<div fxLayout="row" fxLayoutAlign="space-around center" style="background-color:#333333; padding:10px; color:white;" *ngIf="getUserType()=='admin'">
+    <div class="admin-link">Logged in as administrator</div>
+    <div fxFlex></div>
+    <a class="admin-link" routerLink="/admin/dashboard"><button mat-button>Dashboard</button></a>
+    <a class="admin-link" routerLink="/admin/reports"><button mat-button>View Reports</button></a>
+    <a class="admin-link" routerLink="/admin/logout"><button mat-button>Log Out</button></a>
+    <style>
+      .admin-link{
+        color:#CCCCCC;
+      }
+    </style>
+</div>
+
+<div fxLayout="column" style="padding:10px;">
+
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+
+    <img src="assets/images/logo.jpg" alt="logo" style="width:50px; height:70px;">
+
+    <span style="margin-left:20px; font-size:60px; letter-spacing:15px; line-height:70px; vertical-align:middle">AWPA
+    </span>
+
+    <div fxFlex></div>
+
+    <div>
+      <style>
+        a {
+          color: black;
+        }
+      </style>
+      <a routerLink="/home"><button mat-button>Home</button></a>
+      <a routerLink="/about"><button mat-button>About Us</button></a>
+
+      <button mat-button [matMenuTriggerFor]="shelters">Shelters</button>
+      <button mat-button [matMenuTriggerFor]="help">How to Help</button>
+      <button mat-button>Contact Us</button>
+      <button mat-icon-button [matMenuTriggerFor]="options" *ngIf="isLoggedIn()">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <button class="ml-4" mat-flat-button color="primary" routerLink="/signup" *ngIf="!isLoggedIn()">Sign up</button>
+      <button class="ml-2" mat-stroked-button routerLink="/signin" *ngIf="!isLoggedIn()">Sign in</button>
+
+
+      <mat-menu #help="matMenu">
+        <a routerLink="/petProfile"><button mat-menu-item>Adopt a Pet</button></a>
+        <button mat-menu-item>Sponsor</button>
+      </mat-menu>
+
+      <mat-menu #shelters="matMenu">
+        <button mat-menu-item>Dehiwela</button>
+        <button mat-menu-item>Kahatuduwa</button>
+      </mat-menu>
+
+      <mat-menu #options="matMenu">
+        <a routerLink="/myProfile"><button mat-menu-item>My Profile</button></a>
+        <button mat-menu-item (click)="logout()">Log out</button>
+      </mat-menu>
+    </div>
+
   </div>
-</header>
+  <!--<div>Animal Welfare and Protection Association</div>-->
+</div>
