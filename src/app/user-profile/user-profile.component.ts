@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class UserProfileComponent implements OnInit {
 
-  imagePath = "";
+  imagePath = "assets/images/user-profile-picture.png";
   selectedFile: File = null;
   formData = new FormData();
 
@@ -40,7 +40,9 @@ export class UserProfileComponent implements OnInit {
     }).subscribe(
       res => {
         this.userService.user = res['user'];
-        this.imagePath = environment.serverUrl + "/"+ this.userService.user.profilePicture;
+        if(this.userService.user.profilePicture != "") {
+          this.imagePath = environment.serverUrl + "/"+ this.userService.user.profilePicture;
+        }
         // Update dialog data 
         this.userService.updateForm.patchValue({
           address: this.userService.user.address,
@@ -72,7 +74,6 @@ export class UserProfileComponent implements OnInit {
           });
         },
         err => {
-          console.log(err);
           // Snackbar alert for error
           this._snackBar.open("Operation Failed!", "", {
             duration: 3000,

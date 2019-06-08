@@ -15,10 +15,10 @@ export class UserService {
     $key: new FormControl(null),
     fullName: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
-    nic: new FormControl('', [Validators.required]),
+    nic: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(12)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    telephone: new FormControl('', [Validators.required, Validators.minLength(10)]),
-    password: new FormControl('', Validators.required),
+    telephone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   initializeSignUpFormGroup() {
@@ -40,7 +40,7 @@ export class UserService {
 
   updateForm: FormGroup = new FormGroup({
     address: new FormControl('', [Validators.required]),
-    telephone: new FormControl('', Validators.required),
+    telephone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
   });
 
   // Save token in local storage
