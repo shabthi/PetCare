@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
 
-  user = {"fullName": "", "address": "", "email": "", "nic": "", "telephone": ""};
+  user = {"fullName": "", "address": "", "email": "", "nic": "", "telephone": "", "profilePicture": ""};
 
   constructor(private http: HttpClient) { }
 
