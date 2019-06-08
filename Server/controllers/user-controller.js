@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
 const User = require('../models/user');
 const Stats = require('../models/stats');
@@ -136,16 +137,28 @@ exports.userUpdate = (req, res, next) => {
 
 // Update profile picture
 exports.updateProfilePicture = (req, res, next) => {
+    olderPicture = ""
+    
+    // Set older profile picture
     User.findOne({ _id: req.userId }).select('profilePicture').exec().then(doc => {
-        console.log(doc.profilePicture);
+        this.olderPicture = doc.profilePicture;
     });
-    const newPicture = {"profilePicture": req.file.path};
-    User.update({ _id: req.userId }, { $set: newPicture }).exec()
+
+    // Add new picture
+    const newPicture = { "profilePicture": req.file.path };
+    User.updateOne({ _id: req.userId }, { $set: newPicture }).exec()
         .then(result => {
             if (result.ok == 1) {
                 res.status(200).json({
                     message: 'Profile picture updated'
                 });
+
+                // Delete older picture
+                if (this.olderPicture != "") {
+                    fs.unlink(this.olderPicture, function (err) {
+                        if (err) throw err;
+                    });
+                }
             } else {
                 res.status(500).json({
                     message: 'Profile picture does not updated!'
