@@ -95,7 +95,7 @@ exports.userLogin = (req, res, next) => {
 
 // Get user profile
 exports.userProfile = (req, res, next) => {
-    User.findOne({ _id: req.userId },
+    User.findOne({ _id: req.user.userId },
         (err, user) => {
             if (!user) {
                 return res.status(404).json({
@@ -115,7 +115,7 @@ exports.userUpdate = (req, res, next) => {
     for (const ops of req.body) {
         updateOps[ops.propName] = ops.value;
     }
-    User.update({ _id: req.userId }, { $set: updateOps }).exec()
+    User.update({ _id: req.user.userId }, { $set: updateOps }).exec()
         .then(result => {
             console.log(result);
             if (result.ok == 1) {
@@ -140,13 +140,13 @@ exports.updateProfilePicture = (req, res, next) => {
     olderPicture = ""
     
     // Set older profile picture
-    User.findOne({ _id: req.userId }).select('profilePicture').exec().then(doc => {
+    User.findOne({ _id: req.user.userId }).select('profilePicture').exec().then(doc => {
         this.olderPicture = doc.profilePicture;
     });
 
     // Add new picture
     const newPicture = { "profilePicture": req.file.path };
-    User.updateOne({ _id: req.userId }, { $set: newPicture }).exec()
+    User.updateOne({ _id: req.user.userId }, { $set: newPicture }).exec()
         .then(result => {
             if (result.ok == 1) {
                 res.status(200).json({

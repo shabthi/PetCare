@@ -22,7 +22,7 @@ import { ReportComponent } from './admin/report/report.component';
 
 //Angular material modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatPaginatorModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatDividerModule } from '@angular/material';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatPaginatorModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatDividerModule, MatDialogModule  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
@@ -102,7 +102,7 @@ import { ItemsNeedComponent } from './inventory/items-need/items-need.component'
     ReactiveFormsModule,
     CountUpModule,
     //Angular material modules
-    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatDividerModule
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatDividerModule, MatDialogModule 
   ],
   providers: [
     PetService,
