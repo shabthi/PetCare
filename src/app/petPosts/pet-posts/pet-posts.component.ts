@@ -13,6 +13,7 @@ export class PetPostsComponent implements OnInit, OnDestroy {
 
   petposts:PetPost[]=[];
   subscription:Subscription; 
+  // id:string;
 
   constructor(private petPostService:PetPostService,
   private router:Router,
@@ -42,5 +43,9 @@ export class PetPostsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-
+  onDeletePetPost(id){
+    console.log(id);
+    this.petPostService.deletePetPost(id);
+    this.router.navigate(['/petPosts']);
+  }
 }
