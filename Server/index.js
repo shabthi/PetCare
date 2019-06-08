@@ -14,6 +14,8 @@ var adminRoutes = require('./routes/admin-routes');
 var statsRoutes = require('./routes/stats-routes');
 var exportRoutes = require('./routes/export-routes');
 var itemRoutes = require('./routes/item-routes');
+var petPostRoutes = require('./routes/petpost-routes')
+const path = require('path');
 
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -47,6 +49,8 @@ app.use('/stats', statsRoutes);
 app.use('/export', exportRoutes);
 
 app.use('/items', itemRoutes);
+app.use('/api/petposts', petPostRoutes);
+app.use("/images",express.static(path.join("Server/images")))
 
 app.use('/', appRoutes);
 

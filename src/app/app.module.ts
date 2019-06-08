@@ -54,6 +54,9 @@ import { ExportComponent } from './admin/export/export.component';
 import { ExportUsersComponent } from './admin/export/export-users/export-users.component';
 import { ActiveUsersComponent } from './admin/reports/charts/active-users/active-users.component';
 import { ItemsNeedComponent } from './inventory/items-need/items-need.component';
+import { AddPetPostComponent } from './petPosts/add-pet-post/add-pet-post.component';
+import { PetPostsComponent } from './petPosts/pet-posts/pet-posts.component';
+import { PetPostService } from './petPosts/pet-post.service';
 
 @NgModule({
   declarations: [
@@ -92,6 +95,8 @@ import { ItemsNeedComponent } from './inventory/items-need/items-need.component'
     ExportUsersComponent,
     ActiveUsersComponent,
     ItemsNeedComponent,
+    AddPetPostComponent,
+    PetPostsComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +114,8 @@ import { ItemsNeedComponent } from './inventory/items-need/items-need.component'
     InventoryService,
     UserService,
     AuthGuard,
-    ExportService
+    ExportService,
+    PetPostService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogProfileUpdateComponent],
