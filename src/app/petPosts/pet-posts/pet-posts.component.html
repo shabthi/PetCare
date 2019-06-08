@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="btn btn-primary" (click)="onNewPost()">Create Post</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let petpost of petposts">
+      
+        <div class="card text-center" style="width: 22rem; height: 28rem;">
+          <img [src]="petpost.imagePath" class="card-img-top" alt="{{petpost.name}}" style="width: 22rem; height: 15rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{petpost.name}}</h5>
+            <p class="card-text">{{petpost.description}}</p>
+            <div class="row">
+              <div class="col-sm-4">
+                <a href="#" class="btn btn-primary">Edit</a>
+              </div>
+              <div class="col-sm-4">
+                <a href="#" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>

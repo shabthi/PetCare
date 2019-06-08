@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Update Profile</h2>
+<!-- <h2 mat-dialog-title>Update Profile</h2>
 <mat-dialog-content class="mat-typography">
 
   <form [formGroup]="userService.updateForm">
@@ -13,9 +13,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Telephone</mat-label>
         <input floatLabel="true" matInput type="tel" formControlName="telephone" placeholder="Telephone">
-        <mat-error *ngIf="userService.updateForm.controls['telephone'].errors?.required">This field is required</mat-error>
-        <mat-error *ngIf="userService.updateForm.controls['telephone'].errors?.minlength">Minimum 10 characters needed</mat-error>
-        <mat-error *ngIf="userService.updateForm.controls['telephone'].errors?.maxlength">Maximum can have only 10 characters</mat-error>
+        <mat-error>This field cannot be empty</mat-error>
       </mat-form-field>
 
     </div>
@@ -24,5 +22,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button class="mr-2" mat-stroked-button color="accent" mat-dialog-close>Cancel</button>
-  <button mat-flat-button color="primary" [mat-dialog-close]="data" (click)="updateProfile()" [disabled]="userService.updateForm.invalid">Update</button>
-</mat-dialog-actions>
+  <button mat-flat-button color="primary" [mat-dialog-close]="data" (click)="updateProfile()">Update</button>
+</mat-dialog-actions> -->
