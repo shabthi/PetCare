@@ -15,6 +15,18 @@ module.exports = class Stats {
         db.collection('report_data').update({date:date}, {$inc: {new_users:1}}, { upsert: true, multi: true });
     }
 
+    static newRequest(){
+        var db = require('../db').getDb();
+        let date = new Date().toISOString().split("T")[0];
+        db.collection('report_data').update({date:date}, {$inc: {requests:1}}, { upsert: true, multi: true });
+    }
+
+    static newAdoption(){
+        var db = require('../db').getDb();
+        let date = new Date().toISOString().split("T")[0];
+        db.collection('report_data').update({date:date}, {$inc: {adoptions:1}}, { upsert: true, multi: true });
+    }
+
     static activeUser(id){
         var db = require('../db').getDb();
         let date = new Date().toISOString().split("T")[0];

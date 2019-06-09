@@ -157,6 +157,7 @@ router.post('/adopt', checkAuth, (req, res, next) => {
           res.status(500).json({ errmsg: err });
         }
         res.status(200).json({ msg: animal });
+        Stats.newRequest();
       });
     } else {
       res.status(409).json({ errmsg: "Already Requested!" });
@@ -193,7 +194,10 @@ router.post('/requests/approve', (req, res, next) => {
     }
     , (err, animals) => {
     if(err) res.send(500).json(err);
-    else res.status(200).json(animals);
+    else{
+      res.status(200).json(animals);
+      Stats.newAdoption();
+    }
   });
 
 });

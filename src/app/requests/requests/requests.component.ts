@@ -17,30 +17,35 @@ export class RequestsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  dataSource:MatTableDataSource<any>;
+  dataSource: MatTableDataSource<any>;
 
-  constructor(private requestsService: RequestsService, private userService: UserService,    private http: HttpClient,
+  constructor(private requestsService: RequestsService, private userService: UserService, private http: HttpClient,
 
   ) {
+  }
+
+  async ngOnInit() {
+
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Authorization', "Bearer " + this.userService.getToken());
 
-    this.http.get(environment.serverUrl + '/user/profile', {
+    let p1 = this.http.get(environment.serverUrl + '/user/profile', {
       headers: headers
-    }).subscribe(
+    }).toPromise()
+    .then(
       res => {
         this.userService.user = res['user'];
+        console.log("USER2", this.userService.user);
       },
       err => {
         console.log(err);
       });
-  }
 
-  ngOnInit() {
+    await p1;
     let self = this;
     let requestsArr = [];
-    this.userService.user.email = "sdfkl@kf.com";
+    console.log("USER", this.userService.user);
     this.requestsService.getRequests(this.userService.user.email)
       .then(function (requests: any) {
         requests.forEach(function (request) {
