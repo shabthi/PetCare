@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,8 @@ export class RegisterComponent implements OnInit {
   }
 
   constructor(
-    private admin:AdminService
+    private admin:AdminService,
+    private router:Router 
   ) { }
 
   ngOnInit() {
@@ -82,10 +84,11 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(): void{
+    let self = this;
     if(!this.validate()) return;
     var res = this.admin.create(this.form.email, this.form.name, this.form.password)
     .then(function(){
-      this.router.navigate(['/register']);
+      self.router.navigate(['/admin/login']);
     });
 
     if(!res){

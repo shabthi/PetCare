@@ -11,7 +11,7 @@ export class PetPostService{
   petPostsChanged=new Subject<PetPost[]>();
   private petposts:PetPost[]=[];
   private petpost:PetPost;
-  uri = 'http://localhost:8080/petposts';
+  uri = 'http://localhost:3000/petposts';
 
   constructor( private http:HttpClient){}
     

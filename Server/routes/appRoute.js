@@ -2,7 +2,11 @@ require('../index');
 var express = require('express');
 var router = express.Router();
 var Animal = require('../models/dataSchema');
+var User = require('../models/user');
+
+const Stats = require('../models/stats');
 const checkAuth = require('../middleware/check-auth');
+
 
 
 var nodemailer = require('nodemailer');
@@ -48,49 +52,45 @@ router.post('/create', (req, res, next) => {
         res.status(500).json({ errmsg: err });
       res.status(200).json({ msg: animal });
     });
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'shabthij@gmail.com',
+        pass: 'ypurwnhhsnzliphv'
+      }
+    });
+    User.find({}, (err, users) => {
+
+      let userList = [];
+      users.forEach(function(user){
+        userList.push(user.email);
+      })
+      const mailOptions = {
+        from: 'AWPA', // sender address
+        to: userList, // list of receivers
+        subject: 'New Pet has been added', // Subject line
+        text: "Click here to view the pets. http://localhost:4200/petProfile "
+        // plain text body
+      };
+
+      transporter.sendMail(mailOptions, function (err, info) {
+        if (err)
+          console.log(err)
+        else
+          console.log(info);
+      });
+    });
 
   });
 
 
 
-
-  /* //send mail
-   async function sendMail(){
-   // create reusable transporter object using the default SMTP transport
- let transporter = nodemailer.createTransport({
-   host: "smtp.gmail.com",
-   port: 587,
-   secure: false, // true for 465, false for other ports
-   auth: {
-     user: "shabthij@gmail.com", // generated ethereal user
-     pass: "4$green8d" // generated ethereal password
-   }
- });
-// send mail with defined transport object
- let info = await transporter.sendMail({
-   from: '"Shabthi"', // sender address
-   to: "shabthij@gmail.com", // list of receivers
-   subject: "New Pet Added", // Subject line
-   text: "Hello world?", // plain text body
-   //html: "<b>Hello world?</b>" // html body
- });
-console.log("Message sent: %s", info.messageId);
- // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>  // Preview only available when sending through an Ethereal account
- console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info)); 
- main().catch(console.error);}
- */
+  // windows app password ypurwnhhsnzliphv
 
 
-  /*form.parse(req, function (err, fields, files) {
-    var oldpath = files.image.path;
-    var newpath = 'C:/Users/Shabthika/Desktop/3rd Year/Web/PetCare/Images' + files.image.name;
-    newAnimal.image=newpath;
-    fs.rename(oldpath, newpath, function (err) {
-      if (err) throw err;
-      res.write('File uploaded and moved!');
-      res.end();
-    });
-}); */
+
+
+
 
 });
 
@@ -130,38 +130,76 @@ router.delete('/delete/:id', (req, res, next) => {
     res.status(200).json({ msg: animal });
   });
 
-});
-
-// Add new requesters email
-router.post('/adopt', checkAuth, (req, res, next) => {
-
-  Animal.findById(req.body.petId, (err, animal) => {
-
-    isExist = false;
-
-    // Check whether already requested
-    animal.requests.forEach(email => {
-      if (req.user.email == email) {
-        isExist = true;
-      }
-    });
-
-    if (isExist == false) {
+  if (isExist == false) {
+    if (err) {
+      res.status(500).json({ errmsg: err });
+    }
+    animal.requests.push(req.user.email);
+    animal.save((err, animal) => {
       if (err) {
         res.status(500).json({ errmsg: err });
       }
-      animal.requests.push(req.user.email);
-      animal.save((err, animal) => {
-        if (err) {
-          res.status(500).json({ errmsg: err });
-        }
-        res.status(200).json({ msg: animal });
-      });
-    } else {
-      res.status(409).json({ errmsg: "Already Requested!" });
-    }
-  });
+      res.status(200).json({ msg: animal });
+      Stats.newRequest();
+    });
+  } else {
+    res.status(409).json({ errmsg: "Already Requested!" });
+  }
 });
+
+
+
+router.post('/requests', (req, res, next) => {
+
+  Animal.find({ ownerEmail: req.body.email }, (err, animals) => {
+    let requests = [];
+    animals.forEach(function (a) {
+      a.requests.forEach(function (email) {
+        let r = {
+          requestEmail: email,
+          animal: a
+        }
+        requests.push(r);
+      })
+    })
+
+    res.status(200).json(requests);
+  });
+
+});
+
+router.post('/requests/approve', (req, res, next) => {
+  console.log(req.body.animalId);
+  Animal.findByIdAndUpdate(req.body.animalId,
+    {
+      status: "Adopted",
+      ownerEmail: req.body.requestEmail,
+      requests: []
+    }
+    , (err, animals) => {
+      if (err) res.send(500).json(err);
+      else {
+        res.status(200).json(animals);
+        Stats.newAdoption();
+      }
+    });
+
+});
+
+router.post('/requests/reject', (req, res, next) => {
+  console.log(req.body.animalId);
+  Animal.findByIdAndUpdate(req.body.animalId,
+    {
+      $pullAll: { requests: [req.body.requestEmail] }
+    }
+    , (err, animals) => {
+      if (err) res.send(500).json(err);
+      else res.status(200).json(animals);
+    });
+
+});
+
+
 
 
 

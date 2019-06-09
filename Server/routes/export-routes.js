@@ -27,5 +27,20 @@ router.get('/users', (req, res, next) => {
     })  
 });
 
+router.get('/pets', (req, res, next) => {
+    var db = require('../db').getDb();
+    db.collection('animals').find().toArray(function(err, pets){
+        if(err){
+            res.status(500);
+            res.json("error");
+            return;
+        }
+        console.log(pets);
+        res.status(200);
+        res.json(pets);
+    })  
+});
+
+
 
 module.exports = router;
