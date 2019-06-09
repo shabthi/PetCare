@@ -28,13 +28,19 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteItem(id){
-    this.inventoryservice.deleteItem(id).subscribe(()=>{
-      this.fetchItems();
-    });
-  
+    if(confirm("Delete the item!")){
+      this.inventoryservice.deleteItem(id).subscribe(()=>{
+        this.fetchItems();
+        this.fetchReorderItems();
+      });
+    }
 
   }
-
+// if (confirm("Press a button!")) {
+//     txt = "You pressed OK!";
+//   } else {
+//     txt = "You pressed Cancel!";
+//   }
   fetchReorderItems(){
     this.inventoryservice
     .getReorderItems()
