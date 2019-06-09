@@ -47,6 +47,7 @@ const routes: Routes = [
   { path: 'itemsNeed' , component:ItemsNeedComponent},
   { path: 'addPetPost', component:AddPetPostComponent},
   { path: 'petPosts', component:PetPostsComponent},
+  { path: 'editPetPost/:id' , component:AddPetPostComponent},
 
   { path: 'signup', component:SignupComponent},
   { path: 'signin', component:SigninComponent},
