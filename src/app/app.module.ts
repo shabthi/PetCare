@@ -57,6 +57,7 @@ import { ItemsNeedComponent } from './inventory/items-need/items-need.component'
 import { AddPetPostComponent } from './petPosts/add-pet-post/add-pet-post.component';
 import { PetPostsComponent } from './petPosts/pet-posts/pet-posts.component';
 import { PetPostService } from './petPosts/pet-post.service';
+import { RequestsComponent } from './requests/requests/requests.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,9 @@ import { PetPostService } from './petPosts/pet-post.service';
     ActiveUsersComponent,
     ItemsNeedComponent,
     PetPostsComponent,
+    AddPetPostComponent,
+    ExportPetsComponent,
+    RequestsComponent
   ],
   imports: [
     AppRoutingModule,

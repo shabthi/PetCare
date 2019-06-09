@@ -15,7 +15,7 @@ export class PetPostService{
   constructor( private http:HttpClient){}
     
   getPetPosts(){
-    this.http.get<{message:string,petposts:any}>('http://localhost:8080/api/petposts')
+    this.http.get<{message:string,petposts:any}>('http://localhost:3000/api/petposts')
     .pipe(
       map((postData)=>{
         return postData.petposts.map(petpost=>{
@@ -35,7 +35,7 @@ export class PetPostService{
      
   }
   getPetPost1(id:string){
-    return this.http.get<{_id:string,name:string,imagePath:string,description:string}>("http://localhost:8080/api/petposts/"+id);
+    return this.http.get<{_id:string,name:string,imagePath:string,description:string}>("http://localhost:3000/api/petposts/"+id);
         
   }
 
@@ -56,7 +56,7 @@ export class PetPostService{
       postData.append("description",petpost.description)
   
     this.http.post<{message:string,petpostId:string,imagePath:string}>(
-      "http://localhost:8080/api/petposts/",postData
+      "http://localhost:3000/api/petposts/",postData
     )
     .subscribe(responseData=>{
       const id=responseData.petpostId ;
@@ -82,7 +82,7 @@ export class PetPostService{
       newPetPost.imagePath=image;
       postData =newPetPost;
     }
-    this.http.put<{message:string,imagePath:string}>("http://localhost:8080/api/petposts/"+id,postData )
+    this.http.put<{message:string,imagePath:string}>("http://localhost:3000/api/petposts/"+id,postData )
     .subscribe((response)=>{
       const updatedPetPosts=[...this.petposts];
       const oldPetPostIndex=updatedPetPosts.findIndex(c=>c.id===id);
@@ -97,7 +97,7 @@ export class PetPostService{
     
 
   deletePetPost(petpostId:String){
-    this.http.delete("http://localhost:8080/api/petposts/"+petpostId)
+    this.http.delete("http://localhost:3000/api/petposts/"+petpostId)
     .subscribe((response)=>{
       console.log(response);
       const updatedPetPosts=this.petposts.filter(petpost=>petpost.id !== petpostId);
