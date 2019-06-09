@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class PetService {
   private pet:Pet
-  // private baseUri:string="http://localhost:8080";
-  private baseUri:string="http://localhost:3000";
+  private baseUri:string="http://localhost:8080";
+  //private baseUri:string="http://localhost:3000";
   private headers = new HttpHeaders().set('Content-Type','application/json');
   constructor(private http:HttpClient, private userService: UserService) { }
 
