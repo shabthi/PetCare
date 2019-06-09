@@ -44,8 +44,10 @@ export class PetPostsComponent implements OnInit, OnDestroy {
   }
 
   onDeletePetPost(id){
-    console.log(id);
-    this.petPostService.deletePetPost(id);
-    this.router.navigate(['/petPosts']);
+    if(confirm("Delete the post!")){
+      console.log(id);
+      this.petPostService.deletePetPost(id);
+      this.router.navigate(['/petPosts']);
+    }
   }
 }

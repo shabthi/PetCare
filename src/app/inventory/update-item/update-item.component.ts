@@ -42,15 +42,17 @@ export class UpdateItemComponent implements OnInit {
       name: ['', Validators.required ],
       code: ['', Validators.required ],
       quantity: ['', Validators.required ],
-      description: ['', Validators.required ],
+      description: ['',Validators.required ],
       reorderLevel: ['', Validators.required ]
     });
   }
 
   updateItem(name, code, quantity, description, reorderLevel) {
-    this.inventoryservice.updateItem(this.id, name, code, quantity, description, reorderLevel).subscribe(() => {
-      this.router.navigate(['/items']);
-    });
+    if(confirm("Update the item!")){
+      this.inventoryservice.updateItem(this.id, name, code, quantity, description, reorderLevel).subscribe(() => {
+        this.router.navigate(['/items']);
+      });
+    }
   }
 
 
