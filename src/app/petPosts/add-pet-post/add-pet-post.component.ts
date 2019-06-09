@@ -36,6 +36,7 @@ export class AddPetPostComponent implements OnInit {
     if(this.editMode){
      this.petPostService.updatePetPost(this.id,newPetPost,image);
      console.log(image);
+     this.router.navigate(['/petPosts']);
     }else{
      this.petPostService.addPetPost(newPetPost,image);
      this.router.navigate(['/petPosts']);
