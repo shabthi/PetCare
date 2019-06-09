@@ -10,11 +10,13 @@ import { InventoryService } from '../inventory.service';
 export class ItemsComponent implements OnInit {
 
   items: Item[];
-
+  reorderItems: Item[];
+  
   constructor(private inventoryservice: InventoryService ) { }
 
   ngOnInit() {
     this.fetchItems();
+    this.fetchReorderItems();
   }
    
   fetchItems(){
@@ -29,8 +31,16 @@ export class ItemsComponent implements OnInit {
     this.inventoryservice.deleteItem(id).subscribe(()=>{
       this.fetchItems();
     });
-    
   
+
+  }
+
+  fetchReorderItems(){
+    this.inventoryservice
+    .getReorderItems()
+    .subscribe((data:Item[])=>{
+      this.reorderItems=data;
+    });
   }
 
 }

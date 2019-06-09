@@ -7,7 +7,8 @@ import { Item } from '../inventory/items/item';
 })
 export class InventoryService {
 
-  uri = 'http://localhost:8080/items';
+  // uri = 'http://localhost:8080/items';
+  uri = 'http://localhost:3000/items';
 
   constructor(private http: HttpClient) { }
 
@@ -51,7 +52,10 @@ export class InventoryService {
     return this
               .http
               .get(`${this.uri}/delete/${id}`);
-}
+  }
 
+  getReorderItems() {
+    return this.http.get(`${this.uri}/reorderItems`);
+  }
     
 }

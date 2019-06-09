@@ -98,4 +98,18 @@ router.route('/delete/:id').get(function (req, res) {
     });
 });
 
+
+
+router.get('/reorderItems',(req,res,next)=> {
+  Item.find().
+  $where('this.quantity <= this.reorderLevel').
+  select('name description').
+  exec(function (err, reorderItems){
+    if(err)
+      res.status(500).json(err);
+   res.status(200).json(reorderItems);
+  });
+
+});
+
 module.exports = router;

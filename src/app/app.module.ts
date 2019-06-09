@@ -21,7 +21,7 @@ import { ReportComponent } from './admin/report/report.component';
 
 //Angular material modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatPaginatorModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatDividerModule, MatDialogModule } from '@angular/material';
+import { MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatPaginatorModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatDividerModule, MatDialogModule  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DailyReportComponent } from './admin/reports/daily-report/daily-report.component';
 import { AdoptionsByDayComponent } from './admin/reports/charts/adoptions-by-day/adoptions-by-day.component';
@@ -53,6 +53,10 @@ import { ExportComponent } from './admin/export/export.component';
 import { ExportUsersComponent } from './admin/export/export-users/export-users.component';
 import { ActiveUsersComponent } from './admin/reports/charts/active-users/active-users.component';
 import { ExportPetsComponent } from './admin/export/export-pets/export-pets.component';
+import { ItemsNeedComponent } from './inventory/items-need/items-need.component';
+import { AddPetPostComponent } from './petPosts/add-pet-post/add-pet-post.component';
+import { PetPostsComponent } from './petPosts/pet-posts/pet-posts.component';
+import { PetPostService } from './petPosts/pet-post.service';
 
 @NgModule({
   declarations: [
@@ -89,10 +93,10 @@ import { ExportPetsComponent } from './admin/export/export-pets/export-pets.comp
     ExportComponent,
     ExportUsersComponent,
     ActiveUsersComponent,
-    ExportPetsComponent,
+    ItemsNeedComponent,
+    PetPostsComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
@@ -100,14 +104,15 @@ import { ExportPetsComponent } from './admin/export/export-pets/export-pets.comp
     ReactiveFormsModule,
     CountUpModule,
     //Angular material modules
-    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatDividerModule, MatDialogModule
+    BrowserAnimationsModule, FlexLayoutModule, MatCardModule, MatRadioModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSnackBarModule, MatTabsModule, MatSortModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatDividerModule, MatDialogModule 
   ],
   providers: [
     PetService,
     InventoryService,
     UserService,
     AuthGuard,
-    ExportService
+    ExportService,
+    PetPostService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogProfileUpdateComponent],

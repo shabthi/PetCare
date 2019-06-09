@@ -8,7 +8,8 @@ var animalSchema = mongoose.Schema({
     name:{type: String},
     ownerEmail:{type: String},
     adopterId:{type:String},
-    image:{type:String}
+    image:{type:String},
+    requests: { type: Array }
     
 });
 

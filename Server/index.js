@@ -5,7 +5,7 @@ require('./db').connectToServer(function(err, client){
 
 
 var http = require('http');
-var port =  8080;
+var port = process.env.PORT || 8080;
 var express = require('express');
 var app = express();
 var appRoutes = require('./routes/appRoute');
@@ -14,6 +14,8 @@ var adminRoutes = require('./routes/admin-routes');
 var statsRoutes = require('./routes/stats-routes');
 var exportRoutes = require('./routes/export-routes');
 var itemRoutes = require('./routes/item-routes');
+var petPostRoutes = require('./routes/petpost-routes')
+const path = require('path');
 
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -30,8 +32,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use('/',appRoutes);
-app.use('/user', userRoutes);
-
+app.use('/user', userRoutes); 
+app.use('/uploads/profile-pictures', express.static('uploads/profile-pictures'));
 
 
 //avoid CORS issues
@@ -47,6 +49,8 @@ app.use('/stats', statsRoutes);
 app.use('/export', exportRoutes);
 
 app.use('/items', itemRoutes);
+app.use('/api/petposts', petPostRoutes);
+app.use("/images",express.static(path.join("Server/images")))
 
 app.use('/', appRoutes);
 

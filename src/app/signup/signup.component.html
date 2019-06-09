@@ -20,7 +20,9 @@
 
         <mat-form-field appearance="outline">
           <input matInput formControlName="nic" placeholder="NIC">
-          <mat-error>This field is required</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['nic'].errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['nic'].errors?.minlength">Minimum 10 characters needed</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['nic'].errors?.maxlength">Maximum can have only 12 characters</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -32,14 +34,17 @@
           <input matInput type="tel" formControlName="telephone" placeholder="Telephone">
           <mat-error *ngIf="userService.signUpForm.controls['telephone'].errors?.required">This field is required</mat-error>
           <mat-error *ngIf="userService.signUpForm.controls['telephone'].errors?.minlength">Minimum 10 characters needed</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['telephone'].errors?.maxlength">Maximum can have only 10 characters</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <input matInput type="password" formControlName="password" placeholder="Password">
-          <mat-error>This field is required</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['password'].errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="userService.signUpForm.controls['password'].errors?.minlength">Minimum 6 characters needed</mat-error>
         </mat-form-field>
 
-        <button class="mt-2" mat-flat-button color="primary" [disabled]="userService.signUpForm.invalid">Sign up</button>
+        <button class="mt-2" mat-flat-button color="primary" [disabled]="userService.signUpForm.invalid">Sign
+          up</button>
 
       </div>
     </form>
