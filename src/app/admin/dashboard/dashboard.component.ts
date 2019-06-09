@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
     let self = this;
 
     let p1 = this.reportService.adoptionsByDay('2019-01-01', '2019-12-31')
-      .then(function (results) {
+      .then(function (results:any) {
         for (var key in results) {
           self.total.adoptions += results[key];
         }
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
 
     await p1;
     this.reportService.petsByDay('2019-01-01', '2019-12-31')
-      .then(function (results) {
+      .then(function (results:any) {
         let total = 0;
         for (var key in results) {
           total += results[key];
