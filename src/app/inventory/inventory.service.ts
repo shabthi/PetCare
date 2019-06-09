@@ -7,8 +7,8 @@ import { Item } from '../inventory/items/item';
 })
 export class InventoryService {
 
-   uri = 'http://localhost:8080/items';
-  //uri = 'http://localhost:3000/items';
+  // uri = 'http://localhost:3000/items';
+  uri = 'http://localhost:3000/items';
 
   constructor(private http: HttpClient) { }
 

@@ -2,6 +2,7 @@ require('../index');
 var express = require('express');
 var router = express.Router();
 var Animal = require('../models/dataSchema');
+const Stats = require('../models/stats');
 const checkAuth = require('../middleware/check-auth');
 
 
@@ -156,12 +157,64 @@ router.post('/adopt', checkAuth, (req, res, next) => {
           res.status(500).json({ errmsg: err });
         }
         res.status(200).json({ msg: animal });
+        Stats.newRequest();
       });
     } else {
       res.status(409).json({ errmsg: "Already Requested!" });
     }
   });
 });
+
+router.post('/requests', (req, res, next) => {
+
+  Animal.find({ownerEmail:req.body.email}, (err, animals) => {
+    let requests = [];
+    animals.forEach(function(a){
+      a.requests.forEach(function(email){
+          let r = {
+            requestEmail:email,
+            animal:a
+          }
+          requests.push(r);
+      })
+    })
+
+    res.status(200).json(requests);
+  });
+
+});
+
+router.post('/requests/approve', (req, res, next) => {
+  console.log(req.body.animalId);
+  Animal.findByIdAndUpdate(req.body.animalId,
+    {
+      status:"Adopted",
+      ownerEmail:req.body.requestEmail,
+      requests:[]
+    }
+    , (err, animals) => {
+    if(err) res.send(500).json(err);
+    else{
+      res.status(200).json(animals);
+      Stats.newAdoption();
+    }
+  });
+
+});
+
+router.post('/requests/reject', (req, res, next) => {
+  console.log(req.body.animalId);
+  Animal.findByIdAndUpdate(req.body.animalId,
+    {
+      $pullAll: {requests: [req.body.requestEmail]}
+    }
+    , (err, animals) => {
+    if(err) res.send(500).json(err);
+    else res.status(200).json(animals);
+  });
+
+});
+
 
 
 

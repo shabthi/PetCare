@@ -13,7 +13,7 @@ export class AdminService {
   create(email: String, name: String, password: String) {
     let self = this;
     return new Promise(function(resolve, reject){
-      let url = "http://localhost:8080/admin/register"
+      let url = "http://localhost:3000/admin/register"
       self.http.post(url, 
         {
          name:name,
@@ -34,7 +34,7 @@ export class AdminService {
   login(email:String, password:String){
     let self = this;
     return new Promise(function(resolve, reject){
-      let url = "http://localhost:8080/admin/login"
+      let url = "http://localhost:3000/admin/login"
       self.http.post(url, 
         {
          email:email,
