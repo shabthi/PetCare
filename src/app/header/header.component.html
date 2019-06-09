@@ -7,6 +7,7 @@
     <div class="admin-link">Logged in as administrator</div>
     <div fxFlex></div>
     <a class="admin-link" routerLink="/admin/dashboard"><button mat-button>Dashboard</button></a>
+    <a class="admin-link" routerLink="/items"><button mat-button>Inventory</button></a>
     <a class="admin-link" routerLink="/admin/reports"><button mat-button>View Reports</button></a>
     <a class="admin-link" routerLink="/admin/reports"><button mat-button>Graphs</button></a>
     <a class="admin-link" routerLink="/admin/export"><button mat-button>Export</button></a>
@@ -61,6 +62,8 @@
 
       <mat-menu #options="matMenu">
         <a routerLink="/myProfile"><button mat-menu-item>My Profile</button></a>
+        <a routerLink="/requests"><button mat-menu-item>Requests for Adoption</button></a>
+        <a routerLink="/petPosts"><button mat-menu-item>Pet Posts</button></a>
         <button mat-menu-item (click)="logout()">Log out</button>
       </mat-menu>
     </div>

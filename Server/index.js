@@ -5,7 +5,7 @@ require('./db').connectToServer(function(err, client){
 
 
 var http = require('http');
-var port = process.env.PORT || 8080;
+var port = 3000;
 var express = require('express');
 var app = express();
 var appRoutes = require('./routes/appRoute');
@@ -49,7 +49,7 @@ app.use('/stats', statsRoutes);
 app.use('/export', exportRoutes);
 
 app.use('/items', itemRoutes);
-app.use('/api/petposts', petPostRoutes);
+app.use('/petposts', petPostRoutes);
 app.use("/images",express.static(path.join("Server/images")))
 
 app.use('/', appRoutes);

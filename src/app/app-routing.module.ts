@@ -26,6 +26,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { DonationMainpageComponent } from './donation/donation-mainpage/donation-mainpage.component';
 import { DonnerRegistrationComponent } from './donation/donner-registration/donner-registration.component';
 import { ExportComponent } from './admin/export/export.component';
+import { RequestsComponent } from './requests/requests/requests.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -54,6 +55,8 @@ const routes: Routes = [
   { path: 'donationmainpage', component:DonationMainpageComponent},
   { path: 'donnerregistration', component:DonnerRegistrationComponent},
   { path: 'myProfile', component:UserProfileComponent, canActivate:[AuthGuard]},
+  { path: 'requests', component:RequestsComponent, canActivate:[AuthGuard]},
+
 ];
 
 @NgModule({

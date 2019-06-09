@@ -4,6 +4,10 @@ var router = express.Router();
 var Animal = require('../models/dataSchema');
 var User = require('../models/user');
 
+const Stats = require('../models/stats');
+const checkAuth = require('../middleware/check-auth');
+
+
 
 var nodemailer=require('nodemailer');
 var formidable = require('formidable');
@@ -121,8 +125,76 @@ router.delete('/delete/:id',(req,res,next)=> {
             res.status(500).json({ errmsg: err});
         res.status(200).json({msg:animal});
     });
-    
+
+    if (isExist == false) {
+      if (err) {
+        res.status(500).json({ errmsg: err });
+      }
+      animal.requests.push(req.user.email);
+      animal.save((err, animal) => {
+        if (err) {
+          res.status(500).json({ errmsg: err });
+        }
+        res.status(200).json({ msg: animal });
+        Stats.newRequest();
+      });
+    } else {
+      res.status(409).json({ errmsg: "Already Requested!" });
+    }
+  });
+
+
+
+router.post('/requests', (req, res, next) => {
+
+  Animal.find({ownerEmail:req.body.email}, (err, animals) => {
+    let requests = [];
+    animals.forEach(function(a){
+      a.requests.forEach(function(email){
+          let r = {
+            requestEmail:email,
+            animal:a
+          }
+          requests.push(r);
+      })
+    })
+
+    res.status(200).json(requests);
+  });
+
 });
+
+router.post('/requests/approve', (req, res, next) => {
+  console.log(req.body.animalId);
+  Animal.findByIdAndUpdate(req.body.animalId,
+    {
+      status:"Adopted",
+      ownerEmail:req.body.requestEmail,
+      requests:[]
+    }
+    , (err, animals) => {
+    if(err) res.send(500).json(err);
+    else{
+      res.status(200).json(animals);
+      Stats.newAdoption();
+    }
+  });
+
+});
+
+router.post('/requests/reject', (req, res, next) => {
+  console.log(req.body.animalId);
+  Animal.findByIdAndUpdate(req.body.animalId,
+    {
+      $pullAll: {requests: [req.body.requestEmail]}
+    }
+    , (err, animals) => {
+    if(err) res.send(500).json(err);
+    else res.status(200).json(animals);
+  });
+
+});
+
 
 
 

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FileSelectDirective } from 'ng2-file-upload';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/user.service';
@@ -53,14 +52,15 @@ import { DonnerRegistrationComponent } from './donation/donner-registration/donn
 import { ExportComponent } from './admin/export/export.component';
 import { ExportUsersComponent } from './admin/export/export-users/export-users.component';
 import { ActiveUsersComponent } from './admin/reports/charts/active-users/active-users.component';
+import { ExportPetsComponent } from './admin/export/export-pets/export-pets.component';
 import { ItemsNeedComponent } from './inventory/items-need/items-need.component';
 import { AddPetPostComponent } from './petPosts/add-pet-post/add-pet-post.component';
 import { PetPostsComponent } from './petPosts/pet-posts/pet-posts.component';
 import { PetPostService } from './petPosts/pet-post.service';
+import { RequestsComponent } from './requests/requests/requests.component';
 
 @NgModule({
   declarations: [
-    FileSelectDirective,
     AppComponent,
     HeaderComponent,
     NavigationComponent,
@@ -95,11 +95,12 @@ import { PetPostService } from './petPosts/pet-post.service';
     ExportUsersComponent,
     ActiveUsersComponent,
     ItemsNeedComponent,
-    AddPetPostComponent,
     PetPostsComponent,
+    AddPetPostComponent,
+    ExportPetsComponent,
+    RequestsComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

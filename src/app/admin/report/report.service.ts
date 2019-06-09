@@ -11,7 +11,7 @@ export class ReportService {
   adoptionsByDay(start: string, end: string) {
     let self = this;
     return new Promise(function (resolve, reject) {
-      let url = "http://localhost:8080/stats/adoptions-by-day"
+      let url = "http://localhost:3000/stats/adoptions-by-day"
       self.http.post(url,
         {
           start: start,
@@ -29,7 +29,7 @@ export class ReportService {
   requestsByDay(start: string, end: string) {
     let self = this;
     return new Promise(function (resolve, reject) {
-      let url = "http://localhost:8080/stats/requests-by-day"
+      let url = "http://localhost:3000/stats/requests-by-day"
       self.http.post(url,
         {
           start: start,
@@ -47,7 +47,7 @@ export class ReportService {
   petsByDay(start: string, end: string) {
     let self = this;
     return new Promise(function (resolve, reject) {
-      let url = "http://localhost:8080/stats/pets-by-day"
+      let url = "http://localhost:3000/stats/pets-by-day"
       self.http.post(url,
         {
           start: start,
@@ -65,7 +65,7 @@ export class ReportService {
   usersByDay(start: string, end: string) {
     let self = this;
     return new Promise(function (resolve, reject) {
-      let url = "http://localhost:8080/stats/users-by-day"
+      let url = "http://localhost:3000/stats/users-by-day"
       self.http.post(url,
         {
           start: start,
@@ -83,7 +83,7 @@ export class ReportService {
   activeByDay(start: string, end: string) {
     let self = this;
     return new Promise(function (resolve, reject) {
-      let url = "http://localhost:8080/stats/active-by-day"
+      let url = "http://localhost:3000/stats/active-by-day"
       self.http.post(url,
         {
           start: start,
