@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {Pet} from '../pet';
+import { UserService } from '../shared/user.service';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class PetService {
   private pet:Pet
-  private baseUri:string="http://localhost:8080";
+  // private baseUri:string="http://localhost:8080";
+  private baseUri:string="http://localhost:3000";
   private headers = new HttpHeaders().set('Content-Type','application/json');
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private userService: UserService) { }
 
   createPet(pet:any){
     console.log("in service", pet);
@@ -37,5 +40,15 @@ export class PetService {
   }
   getter(){
     return this.pet;
+  }
+  adopt(petId: String) {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', "Bearer " + this.userService.getToken());
+
+    return this.http.post(environment.serverUrl + '/adopt', {"petId": petId}, {
+      headers: headers,
+      observe: 'response'
+    });
   }
 }

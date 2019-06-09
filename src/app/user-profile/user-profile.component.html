@@ -1,7 +1,21 @@
 <div class="container">
   <mat-card class="bg-gradient mt-3">
-    <img class="rounded mx-auto d-block" src="assets/images/user-profile-picture.png" height="140px" width="140px"
-      alt="Profile picture">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <img class="rounded mx-auto d-block" [src]="imagePath" height="140px" width="140px"
+          alt="Profile picture">
+      </div>
+      <div class="col">
+        <button class="float-sm-right" mat-flat-button color="primary" (click)="file.click()">
+          <mat-icon>camera_alt</mat-icon>
+          Change Profile Picture
+        </button>
+        <input type="file" style="display:none;" (change)="onSelectFile($event)" accept="image/jpeg, image/png" #file>
+      </div>
+    </div>
+
+
     <h3 class="text-center mt-4 text-white">{{ this.userService.user.fullName }}</h3>
   </mat-card>
 
