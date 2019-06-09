@@ -6,12 +6,14 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-sm-4" *ngFor="let petpost of petposts">
+    <div class="col-xs-4" *ngFor="let petpost of petposts" style="margin: 0.8rem;">
       
-        <div class="card" style="width: 22rem; height: 28rem;">
-          <img [src]="petpost.imagePath" class="card-img-top" alt="{{petpost.name}}" style="width: 22rem; height: 15rem;">
+        <div class="card" style="width: 22rem;">
+          <img [src]="petpost.imagePath" class="card-img-top" alt="{{petpost.petname}}" style="width: 22rem; height: 15rem;">
           <div class="card-body">
-            <h5 class="card-title">Pet Name: {{petpost.name}}</h5>
+            <h5 class="card-title">Pet Name: {{petpost.petname}}</h5>
+            <p class="card-text">Date: {{petpost.date}}</p>
+            <p class="card-text">Adopter Name: {{petpost.adoptername}}</p>
             <p class="card-text">Description: {{petpost.description}}</p>
             <div class="row justify-content-center">
               <div class="col-sm-4">

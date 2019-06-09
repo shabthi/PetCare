@@ -47,12 +47,14 @@ router.post('',multer({storage:storage}).single('imagePath'),(req,res,next)=>{
     console.log(req.body.features);
     console.log(req.body.price);
     const petPost=new PetPost({
-        name:req.body.name,
+        petname:req.body.petname,
+        adoptername:req.body.adoptername,
         imagePath:url+"/images/"+req.file.filename ,
-        description:req.body.description
+        description:req.body.description,
+        date:req.body.date
         
     });
-    console.log(petPost.name);
+    console.log(petPost.petname);
     petPost.save().then(result=>{
         res.status(201).json({
             message:'PetPost added successfully',
@@ -82,16 +84,20 @@ router.put("/:id",multer({storage:storage}).single('imagePath'),(req,res,next)=>
 
         petPost=new PetPost({
             _id:req.body.id,
-            name:req.body.name,
+            petname:req.body.petname,
+            adoptername:req.body.adoptername,
             imagePath:imagePath,
-            description:req.body.description
+            description:req.body.description,
+            date:req.body.date
         });
     }else{
         petPost=new PetPost({
             _id:req.body.id,
-            name:req.body.name,
+            petname:req.body.petname,
+            adoptername:req.body.adoptername,
             imagePath:imagePath,
-            description:req.body.description
+            description:req.body.description,
+            date:req.body.date
         });
     }
    

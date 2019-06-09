@@ -49,7 +49,7 @@ app.use('/stats', statsRoutes);
 app.use('/export', exportRoutes);
 
 app.use('/items', itemRoutes);
-app.use('/api/petposts', petPostRoutes);
+app.use('/petposts', petPostRoutes);
 app.use("/images",express.static(path.join("Server/images")))
 
 app.use('/', appRoutes);

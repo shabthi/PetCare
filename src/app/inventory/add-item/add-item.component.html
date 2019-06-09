@@ -37,7 +37,7 @@
         <button type="button" class="btn btn-primary" routerLink="/items">Back</button>
       </div>
       <div class="col-sm-11"> 
-        <button type="submit" (click)="addItem(name.value, code.value, quantity.value, description.value, reorderLevel.value)" class="btn btn-primary">Add Item</button>
+        <button type="submit" (click)="addItem(name.value, code.value, quantity.value, description.value, reorderLevel.value)" [disabled]="angForm.invalid" class="btn btn-primary">Add Item</button>
       </div>
     </div>
   </form>
