@@ -16,6 +16,9 @@ export class AddPetPostComponent implements OnInit {
   editMode=false;
   angForm:FormGroup;
   imagePreview:string;
+  datetime = new Date();
+  date=this.datetime.toISOString().slice(0,10);
+
   constructor(private route:ActivatedRoute,private petPostService:PetPostService,private router:Router) { }
 
   ngOnInit() {
@@ -29,32 +32,37 @@ export class AddPetPostComponent implements OnInit {
   }
 
   onSubmit(){
-    const newPetPost=new PetPost(this.id,this.angForm.value['name'],'',this.angForm.value['description']);
+    const newPetPost=new PetPost(this.id,this.angForm.value['petname'],this.angForm.value['adoptername'],'',this.angForm.value['description'],this.date);
     
     const image=this.angForm.value['imagePath'];
  
     if(this.editMode){
-     this.petPostService.updatePetPost(this.id,newPetPost,image);
-     console.log(image);
-     this.router.navigate(['/petPosts']);
+      if(confirm("Edit the post!")){
+        this.petPostService.updatePetPost(this.id,newPetPost,image);
+        console.log(image);
+        this.router.navigate(['/petPosts']);
+      }
     }else{
-     this.petPostService.addPetPost(newPetPost,image);
-     this.router.navigate(['/petPosts']);
-     
+      if(confirm("Create the post!")){
+        this.petPostService.addPetPost(newPetPost,image);
+        this.router.navigate(['/petPosts']);
+      }
    }
   
  }
 
 
  private initForm(){
-   let postName='';
+   let postPetName='';
+   let postAdopterName='';
    let postImagePath='';
    let postDescription='';
    if(this.editMode){
      
     const petPost=this.petPostService.getPetPost(this.id);
        
-    postName=petPost.name;
+    postPetName=petPost.petname;
+    postAdopterName=petPost.adoptername;
     postImagePath=petPost.imagePath;
     postDescription=petPost.description;
          
@@ -63,7 +71,8 @@ export class AddPetPostComponent implements OnInit {
    }
    console.log(postImagePath);
    this.angForm=new FormGroup({
-     'name':new FormControl(postName,Validators.required),
+     'petname':new FormControl(postPetName,Validators.required),
+     'adoptername':new FormControl(postAdopterName,Validators.required),
      'imagePath':new FormControl(postImagePath,{validators:[Validators.required],asyncValidators:[mimeType]}),
      'description':new FormControl(postDescription,Validators.required)
      

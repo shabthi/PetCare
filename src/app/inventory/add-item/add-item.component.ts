@@ -32,9 +32,11 @@ export class AddItemComponent implements OnInit {
   //   });
   // }
   addItem(name, code, quantity, description, reorderLevel) {
-    this.inventoryservice.addItem(name, code, quantity, description, reorderLevel).subscribe(() => {
-      this.router.navigate(['/items']);
-    });
+    if(confirm("Add the item!")){
+      this.inventoryservice.addItem(name, code, quantity, description, reorderLevel).subscribe(() => {
+        this.router.navigate(['/items']);
+      });
+    }
   }
 
   ngOnInit() {
